@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
    [HideInInspector] public PlayerStats playerStats = new();
-
     int moveDeltaX;
     int moveDeltaY;
 

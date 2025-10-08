@@ -1,0 +1,920 @@
+fileFormatVersion: 2
+guid: 9fd9c9137635c3e47a57c791a6d89a23
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: grimreaper-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 323
+        width: 27
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32dbb0806c8f32c4baf9045fed388fec
+      internalID: -1298784592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 320
+        width: 27
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc3eea4fda96b9347b706f500d069ff6
+      internalID: -1890697289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 319
+        width: 27
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33aac1c80f81b5448afbb084a62a5f30
+      internalID: -1319520867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 320
+        width: 27
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fc29f40d3c05834e891d4864e5d31d6
+      internalID: 107476562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 323
+        width: 27
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff869e2127b5c3a4f89a00cdd46dc1f4
+      internalID: 1762432343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 320
+        width: 27
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e61c50091af4b424aa479eeecfc80be6
+      internalID: -1581355759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 319
+        width: 27
+        height: 54
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eef341540d6f8f4fa9d418b673f3e80
+      internalID: -1737953280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 320
+        width: 27
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d345132dc5a09d149a0f61d85b307ebc
+      internalID: 385183933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 323
+        width: 27
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a071b02428e861498fa2bc90b2dbebc
+      internalID: 334080169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 213
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8a5e4ce68707b747bc20d9aeb9a5a35
+      internalID: 751272735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 214
+        width: 20
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 376403b17cb8bbe4f9b30182f45854b3
+      internalID: -1110911156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 214
+        width: 20
+        height: 32
+      alignment: 9
+      pivot: {x: 0.7915451, y: 0.90054655}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f8e096e4cc4e6346b0e66a0625fb35a
+      internalID: -1647127086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 214
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c881acc2849013b49b810147fb549087
+      internalID: 921143270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 214
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa9c41bb57c1f1c4283800e6c827c540
+      internalID: -521269799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 214
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64f71838b3c31b44ebdbce7e52a5cc8e
+      internalID: 2094107494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 214
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5201c3656de6580439f1d87d68b17e5c
+      internalID: 491136766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_16
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 214
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22fbff4f4f246014a91e8af14fe881e5
+      internalID: 363983240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_17
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 214
+        width: 20
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76d47e75dc454634792ee4f7308ce697
+      internalID: -964302122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_18
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 123
+        width: 31
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d56331181f42a419f884c6d28a5886
+      internalID: 2027480024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_19
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 123
+        width: 31
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b03941aebb41649a73f858813acb5f
+      internalID: 1156786174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_20
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 123
+        width: 32
+        height: 51
+      alignment: 9
+      pivot: {x: 0.515, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8f66cd2b3303514faad3afc1da70b6e
+      internalID: 2061066576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_21
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 123
+        width: 31
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e670684aa16f5549b1728aad06547d7
+      internalID: -1743548438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_22
+      rect:
+        serializedVersion: 2
+        x: 436
+        y: 123
+        width: 31
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ce77484988b1c4b8fc8e9228843251
+      internalID: 1688824095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_23
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 123
+        width: 31
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef59c2c6ae4508748994049b09a46216
+      internalID: 1296308644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_24
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 123
+        width: 32
+        height: 51
+      alignment: 9
+      pivot: {x: 0.515, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f965b8082e6225b498769e61c4df1739
+      internalID: -2082381720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_25
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 123
+        width: 31
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3697279d46c4261479897aff66dacde7
+      internalID: 920470582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_26
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 123
+        width: 31
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 007f83e445fccb54c9b6156774926524
+      internalID: -2081263937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_27
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 11
+        width: 28
+        height: 31
+      alignment: 9
+      pivot: {x: 0.3366526, y: 0.85493016}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd4fae186a5835540b7a6c8cb263b92e
+      internalID: -7701658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_28
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 11
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d4ad7abe63f5d248826a9a6e1c54e2d
+      internalID: -1524956928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_29
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 11
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ede46af14a196d6499240bed008d1c5f
+      internalID: -395219193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_30
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 11
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed38f79dfabe0db4da8247420f9610a2
+      internalID: 1661823080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_31
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 11
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae616435ca3a3a14ea44792af2b35348
+      internalID: -1053215657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_32
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 11
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc0e76fbfbd9d0942bee3caf30ca5b46
+      internalID: 1880202521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_33
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 11
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8010d5e7ed2b7724a869a097274d15ac
+      internalID: -1236025770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_34
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 11
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a05ba2b9f32fee4aa79c2996aabcda8
+      internalID: 2074429837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: grimreaper-sheet_35
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 11
+        width: 24
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1deeac7880fd8a4793aca7e77203e36
+      internalID: 2050840630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      grimreaper-sheet_0: -1298784592
+      grimreaper-sheet_1: -1890697289
+      grimreaper-sheet_10: -1110911156
+      grimreaper-sheet_11: -1647127086
+      grimreaper-sheet_12: 921143270
+      grimreaper-sheet_13: -521269799
+      grimreaper-sheet_14: 2094107494
+      grimreaper-sheet_15: 491136766
+      grimreaper-sheet_16: 363983240
+      grimreaper-sheet_17: -964302122
+      grimreaper-sheet_18: 2027480024
+      grimreaper-sheet_19: 1156786174
+      grimreaper-sheet_2: -1319520867
+      grimreaper-sheet_20: 2061066576
+      grimreaper-sheet_21: -1743548438
+      grimreaper-sheet_22: 1688824095
+      grimreaper-sheet_23: 1296308644
+      grimreaper-sheet_24: -2082381720
+      grimreaper-sheet_25: 920470582
+      grimreaper-sheet_26: -2081263937
+      grimreaper-sheet_27: -7701658
+      grimreaper-sheet_28: -1524956928
+      grimreaper-sheet_29: -395219193
+      grimreaper-sheet_3: 107476562
+      grimreaper-sheet_30: 1661823080
+      grimreaper-sheet_31: -1053215657
+      grimreaper-sheet_32: 1880202521
+      grimreaper-sheet_33: -1236025770
+      grimreaper-sheet_34: 2074429837
+      grimreaper-sheet_35: 2050840630
+      grimreaper-sheet_36: -59525358
+      grimreaper-sheet_4: 1762432343
+      grimreaper-sheet_5: -1581355759
+      grimreaper-sheet_6: -1737953280
+      grimreaper-sheet_7: 385183933
+      grimreaper-sheet_8: 334080169
+      grimreaper-sheet_9: 751272735
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
         moveDeltaY = (int)Input.GetAxisRaw("Vertical");
         Vector2 moveDelta = new(moveDeltaX , moveDeltaY );
         animator.SetBool("isWalking", moveDeltaX != 0 || moveDeltaY != 0);
+        weaponObj.GetComponent<Animator>().SetBool("bobbingEnabled", animator.GetBool("isWalking"));
         rb.velocity = moveDelta.normalized * moveSpeed;
     }
 

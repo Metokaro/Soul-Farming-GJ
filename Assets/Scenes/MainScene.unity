@@ -797,6 +797,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -878,6 +879,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 854b22d3806934949b3051510d68f799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookAt: {fileID: 118083564}
+  boundX: 0
+  boundY: 0
 --- !u!1 &928244022
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,6 +904,8 @@ GameObject:
   m_Component:
   - component: {fileID: 928244023}
   - component: {fileID: 928244024}
+  - component: {fileID: 928244025}
+  - component: {fileID: 928244026}
   m_Layer: 0
   m_Name: WeaponObj
   m_TagString: Untagged
@@ -962,6 +980,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!95 &928244025
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928244022}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b414388858972ad49a47c7b93208c64f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &928244026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928244022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e03b8e418a3a34c9f80a14af7ec870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  calculatedDamage: 0
+  calculatedWeaponSpeed: 0
+  playerRef: {fileID: 118083567}
+  weaponData: {fileID: 11400000, guid: 34f7dcf22fc4391418c59c8371e6b61d, type: 2}
+  weaponAnimator: {fileID: 0}
 --- !u!1 &1069926325
 GameObject:
   m_ObjectHideFlags: 0

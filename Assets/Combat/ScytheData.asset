@@ -16,3 +16,6 @@ MonoBehaviour:
   DefaultDamage: 35
   DefaultWeaponSpeed: 0.8
   WeaponType: 1
+  unlockedAbilities:
+  - {fileID: 11400000, guid: b476fa7a2f6dc48439fd057d2a252dac, type: 2}
+  - {fileID: 11400000, guid: 877eb0bc623b1f04a9934bec0e166609, type: 2}

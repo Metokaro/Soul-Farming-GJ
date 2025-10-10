@@ -14,4 +14,7 @@ public class WeaponDataTemplate : ScriptableObject
         Ranged = 2,
     }
     public WeaponTypes WeaponType;
+    public List<AbilityDataTemplate> unlockedAbilities;
+
+    
 }

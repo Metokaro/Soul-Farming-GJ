@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AbilitiesHandler;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
-
+    public AbilitiesHandler abilitiesHandler;
    [HideInInspector] public PlayerStats playerStats;
     [HideInInspector] public PlayerLevellingSystem playerLevellingSystem;
     int moveDeltaX;
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        abilitiesHandler.InitializeUnlockedAbilities(weaponObj.GetComponent<BaseWeaponScript>().weaponData.unlockedAbilities);
      
       
     }
@@ -82,5 +83,16 @@ public class PlayerController : MonoBehaviour
         {
             playerLevellingSystem.IncreaseExp(3);
         }
+        if (abilitiesHandler.abilities.Count > 0)
+        {
+            foreach (Ability ability in abilitiesHandler.abilities)
+            {
+                if (Input.GetKeyDown(ability.keybind))
+                {
+                    ability.abilityScript.OnAbilityCast();
+                }
+            }
+        }
+       
     }
 }

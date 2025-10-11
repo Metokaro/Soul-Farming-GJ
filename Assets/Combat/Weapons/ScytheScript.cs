@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScytheScript : BaseWeaponScript
 {
-    bool rotateParent;
+   public bool rotateParent;
     bool attackCooldownActive;
     public float yChange;
     public override void Attack()

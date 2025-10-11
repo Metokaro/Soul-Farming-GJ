@@ -37,10 +37,14 @@ public class PlayerController : MonoBehaviour
         float spriteRendererPivotY = spriteRenderer.sprite.pivot.y - Mathf.FloorToInt(spriteRenderer.sprite.pivot.y);
         float xDifference = mousePos.x - transform.position.x;
         float yDifference = mousePos.y - (transform.position.y + transform.localScale.y * (0.5f - spriteRendererPivotY));
+        bool pauseRotation = weaponObj.GetComponent<BaseWeaponScript>() is ScytheScript && weaponObj.GetComponent<ScytheScript>().rotateParent;
+        if (pauseRotation == false)
+        {
+            spriteRenderer.flipX = xDifference < 0;
+            animator.SetBool("Down", yDifference < 0 - (transform.localScale.y * 0.5f));
+            animator.SetBool("Up", yDifference > 0 + (transform.localScale.y * 0.5f));
+        }
        
-        spriteRenderer.flipX = xDifference < 0;
-        animator.SetBool("Down", yDifference  < 0 - (transform.localScale.y * 0.5f));
-        animator.SetBool("Up", yDifference > 0 + (transform.localScale.y * 0.5f));
         
     }
 
@@ -51,15 +55,19 @@ public class PlayerController : MonoBehaviour
         mousePosout = mousePos;
         Vector3 lookDir = (mousePos - directionOrigin.transform.position).normalized;
         float angle = MathF.Atan2(lookDir.y,lookDir.x) * Mathf.Rad2Deg;
-      
-        directionOrigin.transform.eulerAngles = new(0, 0, angle);
+        bool pauseRotation = weaponObj.GetComponent<BaseWeaponScript>() is ScytheScript && weaponObj.GetComponent<ScytheScript>().rotateParent;
+        
+        if(pauseRotation == false)
+        {
+            directionOrigin.transform.eulerAngles = new(0, 0, angle);
+        }
         float changeYAnimation = 1;
-        if(weaponObj.GetComponent<BaseWeaponScript>() is ScytheScript)
+        if (weaponObj.GetComponent<BaseWeaponScript>() is ScytheScript)
         {
             changeYAnimation = weaponObj.GetComponent<ScytheScript>().yChange;
         }
-        rotateDiff = ((spriteRenderer.flipX && animator.GetBool("Up") == false && animator.GetBool("Down") == false) || (animator.GetBool("Up") && spriteRenderer.flipX == false) || (animator.GetBool("Down")) && spriteRenderer.flipX) ? -1 * changeYAnimation: 1 * changeYAnimation;
-        weaponParent.transform.localScale = new(1, rotateDiff,1);
+        rotateDiff = ((spriteRenderer.flipX && animator.GetBool("Up") == false && animator.GetBool("Down") == false) || (animator.GetBool("Up") && spriteRenderer.flipX == false) || (animator.GetBool("Down")) && spriteRenderer.flipX) ? -1 * changeYAnimation : 1 * changeYAnimation;
+        weaponParent.transform.localScale = new(1, rotateDiff, 1);
     }
 
     // Start is called before the first frame update

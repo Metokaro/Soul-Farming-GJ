@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public Transform directionOrigin;
     public Transform weaponParent;
     public GameObject weaponObj;
+    public float rotateDiff;
+
 
     Animator animator;
     Rigidbody2D rb;
@@ -32,10 +34,14 @@ public class PlayerController : MonoBehaviour
     void SetAnimations(Vector3 mousePos)
     {
         animator.SetBool("isWalking", moveDeltaX != 0 || moveDeltaY != 0);
+        float spriteRendererPivotY = spriteRenderer.sprite.pivot.y - Mathf.FloorToInt(spriteRenderer.sprite.pivot.y);
         float xDifference = mousePos.x - transform.position.x;
-        float yDifference = mousePos.y - transform.position.y;
+        float yDifference = mousePos.y - (transform.position.y + transform.localScale.y * (0.5f - spriteRendererPivotY));
+       
         spriteRenderer.flipX = xDifference < 0;
-        animator.SetBool("Down", yDifference + (transform.localScale.y * 0.5f) < 0);
+        animator.SetBool("Down", yDifference  < 0 - (transform.localScale.y * 0.5f));
+        animator.SetBool("Up", yDifference > 0 + (transform.localScale.y * 0.5f));
+        
     }
 
     public void MouseFaceDirection(out Vector3 mousePosout)
@@ -47,8 +53,12 @@ public class PlayerController : MonoBehaviour
         float angle = MathF.Atan2(lookDir.y,lookDir.x) * Mathf.Rad2Deg;
       
         directionOrigin.transform.eulerAngles = new(0, 0, angle);
-      
-        float rotateDiff = spriteRenderer.flipX ? -1 : 1;
+        float changeYAnimation = 1;
+        if(weaponObj.GetComponent<BaseWeaponScript>() is ScytheScript)
+        {
+            changeYAnimation = weaponObj.GetComponent<ScytheScript>().yChange;
+        }
+        rotateDiff = ((spriteRenderer.flipX && animator.GetBool("Up") == false && animator.GetBool("Down") == false) || (animator.GetBool("Up") && spriteRenderer.flipX == false) || (animator.GetBool("Down")) && spriteRenderer.flipX) ? -1 * changeYAnimation: 1 * changeYAnimation;
         weaponParent.transform.localScale = new(1, rotateDiff,1);
     }
 

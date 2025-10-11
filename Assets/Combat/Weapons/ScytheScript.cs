@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ScytheScript : BaseWeaponScript
 {
+    bool rotateParent;
     bool attackCooldownActive;
+    public float yChange;
     public override void Attack()
     {
         if (attackCooldownActive)
@@ -14,7 +16,7 @@ public class ScytheScript : BaseWeaponScript
         }
 
         Debug.Log("gib me your soul" + Time.deltaTime);
-
+        GetComponent<Animator>().SetTrigger("OnAttack");
         StartCoroutine(Cooldown());
         IEnumerator Cooldown()
         {
@@ -22,6 +24,15 @@ public class ScytheScript : BaseWeaponScript
             yield return new WaitForSeconds(calculatedWeaponSpeed);
             attackCooldownActive = false;
         }
+    }
+
+    public void OnAnimationPlay()
+    {
+        rotateParent = true;
+    }
+    public void OnAnimationEnd()
+    {
+        rotateParent = false;
     }
 
     void Start()
@@ -36,5 +47,6 @@ public class ScytheScript : BaseWeaponScript
         {
             Attack();
         }
+        yChange = rotateParent ? -1 : 1;
     }
 }

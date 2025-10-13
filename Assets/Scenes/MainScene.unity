@@ -891,6 +891,7 @@ MonoBehaviour:
   directionOrigin: {fileID: 138438709}
   weaponParent: {fileID: 207489055}
   weaponObj: {fileID: 928244022}
+  rotateDiff: 0
   abilitiesHandler: {fileID: 118083568}
 --- !u!114 &118083568
 MonoBehaviour:
@@ -2819,6 +2820,8 @@ MonoBehaviour:
   playerRef: {fileID: 118083567}
   weaponData: {fileID: 11400000, guid: 34f7dcf22fc4391418c59c8371e6b61d, type: 2}
   weaponAnimator: {fileID: 0}
+  rotateParent: 0
+  yChange: 0
 --- !u!1 &929637489
 GameObject:
   m_ObjectHideFlags: 0

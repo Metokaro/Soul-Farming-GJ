@@ -17,7 +17,7 @@ MonoBehaviour:
   - targetTilemap: 1
     minX: -12
     maxX: -5
-    minY: 10
+    minY: 9
     maxY: 12
     offsetOrigin_x: 0
     offsetOrigin_y: 0

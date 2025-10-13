@@ -25,7 +25,6 @@ public class AbilitiesHandler : MonoBehaviour
         {
             return;
         }
-        Debug.Log(availableAbilityScripts.Count);
         Ability ability = new()
         {
             hotbarSlot = hotbarSlot,

@@ -15,7 +15,6 @@ public class ScytheScript : BaseWeaponScript
 
         }
 
-        Debug.Log("gib me your soul" + Time.deltaTime);
         GetComponent<Animator>().SetTrigger("OnAttack");
         StartCoroutine(Cooldown());
         IEnumerator Cooldown()

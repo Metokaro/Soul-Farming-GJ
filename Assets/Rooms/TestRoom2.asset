@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 485d4fd23abe61544b39b54900c4ec70, type: 3}
-  m_Name: TestRoom
+  m_Name: TestRoom2
   m_EditorClassIdentifier: 
   roomTier: 0
   copyCoordinates:
   - targetTilemap: 1
-    minX: -12
-    maxX: -4
-    minY: 10
-    maxY: 13
+    minX: -26
+    maxX: -13
+    minY: 4
+    maxY: 12
     offsetOrigin_x: 0
     offsetOrigin_y: 0
   - targetTilemap: 0
-    minX: -12
-    maxX: -4
-    minY: 5
-    maxY: 10
+    minX: -26
+    maxX: -13
+    minY: 3
+    maxY: 9
     offsetOrigin_x: 0
-    offsetOrigin_y: -5
+    offsetOrigin_y: -1

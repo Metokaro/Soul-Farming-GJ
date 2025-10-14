@@ -43,8 +43,8 @@ public class RoomGenerator : MonoBehaviour
         {
             tilemapSizes.Add(new RoomSize() { 
                 
-                roomSize_X = ((coordinates.maxX - coordinates.minX) > 0) ? (coordinates.maxX - coordinates.minX) +1 : ((coordinates.maxX - coordinates.minX) * -1) - 1,
-                roomSize_Y = ((coordinates.maxY - coordinates.minY) > 0) ? (coordinates.maxY - coordinates.minY) +1: ((coordinates.maxY - coordinates.minY) * -1)-1
+                roomSize_X = ((coordinates.maxX - coordinates.minX) > 0) ? (coordinates.maxX - coordinates.minX): ((coordinates.maxX - coordinates.minX) * -1),
+                roomSize_Y = ((coordinates.maxY - coordinates.minY) > 0) ? (coordinates.maxY - coordinates.minY): ((coordinates.maxY - coordinates.minY) * -1)
             }    
            
             );
@@ -99,7 +99,8 @@ public class RoomGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int randomNumber = Random.Range(0, enemyRoomOptions.Count- 1);
+        int randomNumber = Random.Range(0, enemyRoomOptions.Count);
+        Debug.Log(randomNumber);
         currentEnemyRoom = enemyRoomOptions[randomNumber];
         CalculateRoomSizes();
         GetTileMapTemplateInfo();
@@ -117,6 +118,6 @@ public class RoomGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)) { Debug.Log(TilemapPositionSeeker()); }
+        //if (Input.GetKeyDown(KeyCode.Mouse0)) { Debug.Log(TilemapPositionSeeker()); }
     }
 }

@@ -20,7 +20,7 @@ public class PlayerInteraction : MonoBehaviour
             if (nearbyInteractableObjects.Contains(hit.collider.transform.parent.GetComponent<InteractableObject>()))
             {
                 interactableObject = hit.collider.transform.parent.GetComponent<InteractableObject>();
-                interactableObject.OnSelect();
+                interactableObject.OnMouseHover();
                 interactionDisplayUI.SetActive(true);
                 interactionDisplayUI.GetComponent<InteractPanelDisplay>().nameDisplay.text = interactableObject.objectName;
                 interactionDisplayUI.GetComponent<InteractPanelDisplay>().tooltipDisplay.text = interactableObject.interactTooltip;
@@ -30,7 +30,7 @@ public class PlayerInteraction : MonoBehaviour
         }
         else if(selectedObject != null)
         {
-            selectedObject.OnDeselect();
+            selectedObject.OnMouseLeave();
             interactionDisplayUI.SetActive(false);
             selectedObject = null;
         }
@@ -41,7 +41,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if(collision.transform.CompareTag("InteractableObject"))
         {
-            collision.transform.parent.GetComponent<InteractableObject>().OnHoverEnter();
+            collision.transform.parent.GetComponent<InteractableObject>().OnEnterRange();
             nearbyInteractableObjects.Add(collision.transform.parent.GetComponent<InteractableObject>());
         }
         
@@ -50,7 +50,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (collision.transform.CompareTag("InteractableObject"))
         {
-            collision.transform.parent.GetComponent<InteractableObject>().OnHoverExit();
+            collision.transform.parent.GetComponent<InteractableObject>().OnExitRange();
             interactionDisplayUI.SetActive(false);
             nearbyInteractableObjects.Remove(collision.transform.parent.GetComponent<InteractableObject>());
         }

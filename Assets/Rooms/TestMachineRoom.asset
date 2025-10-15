@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44db97dfcfa141b43ad4131f446ba5bd, type: 3}
+  m_Name: TestMachineRoom
+  m_EditorClassIdentifier: 
+  entranceLocation: {x: -11.26, y: 9.16, z: 0}
+  exitLocation: {x: -4.71, y: 5.96, z: 0}
+  roomOrigin: {x: -12, y: 10, z: 0}
+  entranceObj: {fileID: 2768139659821071786, guid: a7a6996227bafa54ca7cecb332cf8bf5, type: 3}
+  exitObj: {fileID: 5758226439643942654, guid: 67da88381c8aafd40932176e2f364452, type: 3}
+  copyCoordinates:
+  - targetTilemap: 1
+    minX: -12
+    maxX: -4
+    minY: 10
+    maxY: 13
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
+  - targetTilemap: 0
+    minX: -12
+    maxX: -4
+    minY: 5
+    maxY: 10
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: -5
+  minStartingLifeEnergy: 75
+  maxStartingLifeEnergy: 200

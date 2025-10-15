@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
         bool pauseRotation = weaponObj.GetComponent<BaseWeaponScript>() is ScytheScript && weaponObj.GetComponent<ScytheScript>().rotateParent;
         if (pauseRotation == false)
         {
+            //Debug.Log(spriteRendererPivotY);
             spriteRenderer.flipX = xDifference < 0;
             animator.SetBool("Down", yDifference < 0 - (transform.localScale.y * 0.5f));
             animator.SetBool("Up", yDifference > 0 + (transform.localScale.y * 0.5f));

@@ -12,27 +12,35 @@ public abstract class InteractableObject : MonoBehaviour
     Color defaultOutlineColor;
   [HideInInspector] public SpriteRenderer spriteRenderer;
     public abstract void OnInteract();
-
-    public virtual void OnHoverEnter()
+    public virtual void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    public virtual void OnEnterRange()
     {
         defaultMaterial = spriteRenderer.material;
-       spriteRenderer.material = outlineMaterial;
+        spriteRenderer.material = outlineMaterial;
         
     }
 
-    public virtual void OnHoverExit()
+    public virtual void OnExitRange()
     {
         spriteRenderer.material = defaultMaterial;
     }
 
-    public virtual void OnSelect()
+    public virtual void OnMouseHover()
     {
         defaultOutlineColor = spriteRenderer.material.GetColor("_OutlineColor");
         spriteRenderer.material.SetColor("_OutlineColor", Color.yellow);
     }
 
-    public virtual void OnDeselect()
+    public virtual void OnMouseLeave()
     {
         spriteRenderer.material.SetColor("_OutlineColor", Color.white);
     }
+}
+
+public interface IMachine
+{
+
 }

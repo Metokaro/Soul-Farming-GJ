@@ -6,10 +6,40 @@ using UnityEngine.Tilemaps;
 
 public class RoomGenerator : MonoBehaviour
 {
-    public List<EnemyRoomDataTemplate> enemyRoomOptions;
+    public List<EnemyRoomTemplate> enemyRoomLayoutOptions;
+    public List<MachineRoomTemplate> machineRoomLayoutOptions;
     public List<Tilemap> templateTilemaps;
     public List<Tilemap> originalTilemaps;
-    [HideInInspector]public EnemyRoomDataTemplate currentEnemyRoom;
+    public PlayerController playerController;
+    [HideInInspector]public RoomDataTemplate currentRoom;
+    RoomPicker roomPickerRef;
+    GameObject exitObjInstance;
+    GameObject entranceObjInstance;
+
+    public int clearedRoomsCount;
+
+    [HideInInspector] public List<EnemyRoomTemplate> loadableEnemyRoomLayouts = new();
+
+    public class EnemyRoomData : RoomData
+    {
+        public int basicEnemiesCount;
+        public int intermediateEnemiesCount;
+        public int advancedEnemiesCount;
+        public int totalEnemiesCount;
+        public int startingMana;
+    }
+
+    public class MachineRoomData : RoomData
+    {
+        public int startingLifeEnergy;
+    }
+
+    public class RoomData
+    {
+        public int RoomNumber;
+    }
+
+    public RoomData currentRoom_Data;
 
     public struct RoomSize
     {
@@ -26,11 +56,11 @@ public class RoomGenerator : MonoBehaviour
     {
         public List<TileInfo> tileInfoList=new();
         public RoomSize roomSize;
-        public EnemyRoomDataTemplate.TilemapCopyCoordinates copyCoordinates;
+        public RoomDataTemplate.TilemapCopyCoordinates copyCoordinates;
     }
 
     public List<TilemapInfo> tilemapInfoList = new();
-    public Tilemap GetTargetTilemap(EnemyRoomDataTemplate.TilemapTypes tilemapType, List<Tilemap> tilemapList)
+    public Tilemap GetTargetTilemap(RoomDataTemplate.TilemapTypes tilemapType, List<Tilemap> tilemapList)
     {
      
         return tilemapList.FirstOrDefault((x) =>LayerMask.LayerToName(x.gameObject.layer) == tilemapType.ToString());
@@ -39,7 +69,7 @@ public class RoomGenerator : MonoBehaviour
     public List<RoomSize> tilemapSizes = new();
     public void CalculateRoomSizes()
     {       
-        foreach(var coordinates in currentEnemyRoom.copyCoordinates)
+        foreach(var coordinates in currentRoom.copyCoordinates)
         {
             tilemapSizes.Add(new RoomSize() { 
                 
@@ -53,9 +83,9 @@ public class RoomGenerator : MonoBehaviour
 
     public void GetTileMapTemplateInfo()
     {
-        foreach (var coordinates in currentEnemyRoom.copyCoordinates)
+        foreach (var coordinates in currentRoom.copyCoordinates)
         {
-            tilemapInfoList.Add(new() { roomSize = tilemapSizes[currentEnemyRoom.copyCoordinates.IndexOf(coordinates)], copyCoordinates = coordinates });
+            tilemapInfoList.Add(new() { roomSize = tilemapSizes[currentRoom.copyCoordinates.IndexOf(coordinates)], copyCoordinates = coordinates });
         }
         foreach (var tilemapInfo in tilemapInfoList)
         {
@@ -89,22 +119,81 @@ public class RoomGenerator : MonoBehaviour
                     TileInfo tileInfo = tilemapInfo.tileInfoList.FirstOrDefault((tile) => tile.tileLocation.x == getLocation_x && tile.tileLocation.y == getLocation_y);
 
                     Tilemap currentTilemapRef = GetTargetTilemap(tilemapInfo.copyCoordinates.targetTilemap, originalTilemaps);
-                    Vector3Int newTileLocation = new(startPos.x + x + tilemapInfo.copyCoordinates.offsetOrigin_x, startPos.y + y + tilemapInfo.copyCoordinates.offsetOrigin_y, 0);
+                    Vector3Int newTileLocation = new(startPos.x + x + tilemapInfo.copyCoordinates.offsetFromOrigin_x, startPos.y + y + tilemapInfo.copyCoordinates.offsetFromOrigin_y, 0);
                     currentTilemapRef.SetTile(newTileLocation, tileInfo.tileBase);
                 }
             }
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void OnEnterRoom()
     {
-        int randomNumber = Random.Range(0, enemyRoomOptions.Count);
-        Debug.Log(randomNumber);
-        currentEnemyRoom = enemyRoomOptions[randomNumber];
+        playerController.transform.position = entranceObjInstance.transform.position;
+        if(currentRoom is MachineRoomTemplate)
+        {
+            
+            currentRoom_Data = new MachineRoomData();
+            MachineRoomTemplate currentMachineRoom = currentRoom as MachineRoomTemplate;
+            MachineRoomData machineRoomData = currentRoom_Data as MachineRoomData;
+            machineRoomData.startingLifeEnergy = Random.Range(currentMachineRoom.minStartingLifeEnergy, currentMachineRoom.maxStartingLifeEnergy + 1);
+            //Debug.Log(machineRoomData.startingLifeEnergy);
+        }
+        else if(currentRoom is EnemyRoomTemplate)
+        {
+            currentRoom_Data = new EnemyRoomData();
+            EnemyRoomData enemyRoomData = currentRoom_Data as EnemyRoomData;
+            EnemyRoomTemplate currentEnemyRoom = currentRoom as EnemyRoomTemplate;
+            enemyRoomData.startingMana = currentEnemyRoom.startingMana;
+            enemyRoomData.basicEnemiesCount = Random.Range(currentEnemyRoom.basicEnemiesCount_min, currentEnemyRoom.basicEnemiesCount_max + 1);
+            enemyRoomData.intermediateEnemiesCount = Random.Range(currentEnemyRoom.intermediateEnemiesCount_min, currentEnemyRoom.intermediateEnemiesCount_max + 1);
+            enemyRoomData.advancedEnemiesCount = Random.Range(currentEnemyRoom.advancedEnemiesCount_min, currentEnemyRoom.advancedEnemiesCount_max + 1);
+            enemyRoomData.totalEnemiesCount = enemyRoomData.basicEnemiesCount + enemyRoomData.intermediateEnemiesCount + enemyRoomData.advancedEnemiesCount;
+            //Debug.Log("Basic enemies: " + enemyRoomData.basicEnemiesCount);
+            //Debug.Log("Intermediate enemies: " + enemyRoomData.intermediateEnemiesCount);
+            //Debug.Log("Advanced enemies: " + enemyRoomData.advancedEnemiesCount);
+            //Debug.Log("Total enemies: " + enemyRoomData.totalEnemiesCount);
+            //Debug.Log("Starting mana: " + enemyRoomData.startingMana);
+           
+        }
+    }
+    public void OnExitRoom()
+    {
+        clearedRoomsCount++;
+        if(currentRoom is EnemyRoomTemplate) { roomPickerRef.IncreaseRoomsClearedCount(currentRoom as EnemyRoomTemplate); }
+        roomPickerRef.currentRoomType = (roomPickerRef.currentRoomType == RoomPicker.RoomType.Enemy) ? RoomPicker.RoomType.Machine : RoomPicker.RoomType.Enemy;
+        Destroy(exitObjInstance);
+        Destroy(entranceObjInstance);
+        foreach(Tilemap tilemap in originalTilemaps)
+        {
+            tilemap.ClearAllTiles();
+        }
+        tilemapInfoList.Clear();
+        roomPickerRef.PickCurrentRoom();
+    }
+
+    public void CreateEntranceAndExit(Vector3Int startPos)
+    {
+        currentRoom.SetEntranceLocationOffset(out var entranceOffset);
+        currentRoom.SetExitLocationOffset(out var exitOffset);
+
+        exitObjInstance = Instantiate(currentRoom.exitObj, startPos + exitOffset,Quaternion.identity);
+        entranceObjInstance = Instantiate(currentRoom.entranceObj, startPos + entranceOffset, Quaternion.identity);
+    }
+
+    public void GenerateRoom()
+    {
         CalculateRoomSizes();
         GetTileMapTemplateInfo();
         SetTilemapInfo(new());
+        CreateEntranceAndExit(new());
+        OnEnterRoom();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        roomPickerRef = GetComponent<RoomPicker>();
+        templateTilemaps.First().transform.parent.gameObject.SetActive(false);
     }
 
     public Vector2Int TilemapPositionSeeker()
@@ -113,11 +202,5 @@ public class RoomGenerator : MonoBehaviour
         mousePos.z = 0;
 
         return new((int)mousePos.x, (int)mousePos.y);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.Mouse0)) { Debug.Log(TilemapPositionSeeker()); }
     }
 }

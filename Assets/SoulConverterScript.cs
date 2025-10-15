@@ -8,9 +8,4 @@ public class SoulConverterScript : InteractableObject
     {
         Debug.Log("Convert soul");
     }
-
-    public void Start()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
 }

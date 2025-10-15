@@ -18,7 +18,7 @@ public class LevelsDisplay : MonoBehaviour
     
     public void UpdateDisplay()
     {
-        levelsAmount.text = "Level " + playerRef.playerLevellingSystem.level;
+        levelsAmount.text = "LVL" + playerRef.playerLevellingSystem.level;
         expAmount.text = playerRef.playerLevellingSystem.exp + "/" + playerRef.playerLevellingSystem.maxExp;
         levelsBar.value = playerRef.playerLevellingSystem.exp/ playerRef.playerLevellingSystem.maxExp;
     }

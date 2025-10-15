@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f252720ed65b29142b526a67cd7cdfcc, type: 3}
+  m_Name: TestEnemyRoom
+  m_EditorClassIdentifier: 
+  entranceLocation: {x: -25.25, y: 6.5, z: 0}
+  exitLocation: {x: -13.75, y: 6.5, z: 0}
+  roomOrigin: {x: -26, y: 4, z: 0}
+  entranceObj: {fileID: 2768139659821071786, guid: a7a6996227bafa54ca7cecb332cf8bf5, type: 3}
+  exitObj: {fileID: 5758226439643942654, guid: 67da88381c8aafd40932176e2f364452, type: 3}
+  copyCoordinates:
+  - targetTilemap: 1
+    minX: -26
+    maxX: -13
+    minY: 4
+    maxY: 12
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
+  - targetTilemap: 0
+    minX: -26
+    maxX: -13
+    minY: 3
+    maxY: 9
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: -1
+  roomTier: 0
+  startingMana: 50
+  basicEnemiesCount_min: 6
+  basicEnemiesCount_max: 10
+  intermediateEnemiesCount_min: 2
+  intermediateEnemiesCount_max: 5
+  advancedEnemiesCount_min: 0
+  advancedEnemiesCount_max: 0

@@ -18,13 +18,6 @@ MonoBehaviour:
   entranceObj: {fileID: 2768139659821071786, guid: a7a6996227bafa54ca7cecb332cf8bf5, type: 3}
   exitObj: {fileID: 5758226439643942654, guid: 67da88381c8aafd40932176e2f364452, type: 3}
   copyCoordinates:
-  - targetTilemap: 1
-    minX: -12
-    maxX: -4
-    minY: 10
-    maxY: 13
-    offsetFromOrigin_x: 0
-    offsetFromOrigin_y: 0
   - targetTilemap: 0
     minX: -12
     maxX: -4
@@ -32,5 +25,26 @@ MonoBehaviour:
     maxY: 10
     offsetFromOrigin_x: 0
     offsetFromOrigin_y: -5
+  - targetTilemap: 3
+    minX: -13
+    maxX: -3
+    minY: 4
+    maxY: 11
+    offsetFromOrigin_x: -1
+    offsetFromOrigin_y: -6
+  - targetTilemap: 1
+    minX: -12
+    maxX: -4
+    minY: 10
+    maxY: 13
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
+  - targetTilemap: 2
+    minX: -12
+    maxX: -4
+    minY: 10
+    maxY: 13
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
   minStartingLifeEnergy: 75
   maxStartingLifeEnergy: 200

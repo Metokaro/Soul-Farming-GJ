@@ -8,6 +8,7 @@ public class RoomGenerator : MonoBehaviour
 {
     public List<EnemyRoomTemplate> enemyRoomLayoutOptions;
     public List<MachineRoomTemplate> machineRoomLayoutOptions;
+    [HideInInspector] public List<EnemyRoomTemplate> loadableEnemyRoomLayouts = new();
     public List<Tilemap> templateTilemaps;
     public List<Tilemap> originalTilemaps;
     public PlayerController playerController;
@@ -17,8 +18,8 @@ public class RoomGenerator : MonoBehaviour
     GameObject entranceObjInstance;
 
     public int clearedRoomsCount;
-
-    [HideInInspector] public List<EnemyRoomTemplate> loadableEnemyRoomLayouts = new();
+    EnemySpawnHandler enemySpawnHandler;
+    
 
     public class EnemyRoomData : RoomData
     {
@@ -43,7 +44,7 @@ public class RoomGenerator : MonoBehaviour
 
     public struct RoomSize
     {
-     public   int roomSize_X;
+       public int roomSize_X;
        public int roomSize_Y;
     }
 
@@ -148,6 +149,7 @@ public class RoomGenerator : MonoBehaviour
             enemyRoomData.intermediateEnemiesCount = Random.Range(currentEnemyRoom.intermediateEnemiesCount_min, currentEnemyRoom.intermediateEnemiesCount_max + 1);
             enemyRoomData.advancedEnemiesCount = Random.Range(currentEnemyRoom.advancedEnemiesCount_min, currentEnemyRoom.advancedEnemiesCount_max + 1);
             enemyRoomData.totalEnemiesCount = enemyRoomData.basicEnemiesCount + enemyRoomData.intermediateEnemiesCount + enemyRoomData.advancedEnemiesCount;
+            enemySpawnHandler.SpawnEnemies();
             //Debug.Log("Basic enemies: " + enemyRoomData.basicEnemiesCount);
             //Debug.Log("Intermediate enemies: " + enemyRoomData.intermediateEnemiesCount);
             //Debug.Log("Advanced enemies: " + enemyRoomData.advancedEnemiesCount);
@@ -193,6 +195,7 @@ public class RoomGenerator : MonoBehaviour
     void Start()
     {
         roomPickerRef = GetComponent<RoomPicker>();
+      enemySpawnHandler =  GetComponent<EnemySpawnHandler>();
         templateTilemaps.First().transform.parent.gameObject.SetActive(false);
     }
 

@@ -18,9 +18,9 @@ TagManager:
   - 
   - 
   - Floor
-  - Walls
+  - FrontWalls
   - WallColliders
-  - 
+  - BackWalls
   - 
   - 
   - 
@@ -39,6 +39,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackgroundColliders
+    uniqueID: 2513387403
+    locked: 0
+  - name: Floors
+    uniqueID: 3323019509
+    locked: 0
+  - name: FrontWalls
+    uniqueID: 3588575545
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackWalls
+    uniqueID: 4019877903
     locked: 0

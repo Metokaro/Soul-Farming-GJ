@@ -8,7 +8,8 @@ public class RoomDataTemplate : ScriptableObject
     public enum TilemapTypes
     {
         Floor,
-        Walls,
+        FrontWalls,
+        BackWalls,
         WallColliders,
         Props,
         Obstacles,

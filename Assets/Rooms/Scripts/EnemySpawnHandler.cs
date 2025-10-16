@@ -25,10 +25,10 @@ public class EnemySpawnHandler : MonoBehaviour
     {
        RoomDataTemplate.TilemapCopyCoordinates floorTilemapCoordinates = roomGeneratorRef.currentRoom.copyCoordinates.First((x) => x.targetTilemap == RoomDataTemplate.TilemapTypes.Floor);
         minSpawnRange_x = (floorTilemapCoordinates.minX + floorTilemapCoordinates.offsetFromOrigin_x) - (int)roomGeneratorRef.currentRoom.roomOrigin.x + 1;
-        minSpawnRange_y = (floorTilemapCoordinates.minY + floorTilemapCoordinates.offsetFromOrigin_y) - (int)roomGeneratorRef.currentRoom.roomOrigin.y + 2;
-        maxSpawnRange_x = (floorTilemapCoordinates.maxX + floorTilemapCoordinates.offsetFromOrigin_x) - (int)roomGeneratorRef.currentRoom.roomOrigin.x - 1;
-        maxSpawnRange_y = (floorTilemapCoordinates.maxY + floorTilemapCoordinates.offsetFromOrigin_y) - (int)roomGeneratorRef.currentRoom.roomOrigin.y + 2;
-        Debug.Log("minX: " + minSpawnRange_x + "maxX: " + maxSpawnRange_x + "minY:" + minSpawnRange_y + "maxY" + maxSpawnRange_y);
+        minSpawnRange_y = (floorTilemapCoordinates.minY + floorTilemapCoordinates.offsetFromOrigin_y) - (int)roomGeneratorRef.currentRoom.roomOrigin.y + 1;
+        maxSpawnRange_x = (floorTilemapCoordinates.maxX + floorTilemapCoordinates.offsetFromOrigin_x) - (int)roomGeneratorRef.currentRoom.roomOrigin.x - 2;
+        maxSpawnRange_y = (floorTilemapCoordinates.maxY + floorTilemapCoordinates.offsetFromOrigin_y) - (int)roomGeneratorRef.currentRoom.roomOrigin.y;
+        Debug.Log(" minX: " + minSpawnRange_x + " maxX: " + maxSpawnRange_x +  "minY:" + minSpawnRange_y + " maxY" + maxSpawnRange_y);
     }
 
     public void TriggerGroupSpawn()
@@ -54,12 +54,13 @@ public class EnemySpawnHandler : MonoBehaviour
 
     public void SpawnRandomEnemy(List<EnemyData> enemyOptions)
     {
-        int randomX = Random.Range(minSpawnRange_x, maxSpawnRange_x);
-        int randomY = Random.Range(minSpawnRange_y, maxSpawnRange_y);
+        float randomX = Random.Range(minSpawnRange_x, maxSpawnRange_x) +0.5f;
+        float randomY = Random.Range(minSpawnRange_y, maxSpawnRange_y)+0.5f;
         EnemyData randomEnemy = enemyOptions[Random.Range(0, enemyOptions.Count)];
-        Vector3 spawnLocation = new Vector3(randomX, randomY, 0);
-        if(CheckIfCollider(spawnLocation))
+        Vector3 spawnLocation = new(randomX, randomY, 0);
+        if (CheckIfCollider(spawnLocation))
         {
+
             SpawnRandomEnemy(enemyOptions);
             return;
         }
@@ -69,7 +70,13 @@ public class EnemySpawnHandler : MonoBehaviour
     }
     bool CheckIfCollider(Vector3 position)
     {
-        RaycastHit2D hit = Physics2D.Raycast(position, Vector3.zero, 1, unspawnableAreaLayerMask);
+        Debug.Log(position);
+        RaycastHit2D hit = Physics2D.Raycast(position,Vector3.zero, 1, unspawnableAreaLayerMask);
+        if(hit.collider != null)
+        {
+            Debug.Log(hit.collider.gameObject.name);
+        }
+        
         return hit;
     }
 
@@ -82,8 +89,24 @@ public class EnemySpawnHandler : MonoBehaviour
     public void Start()
     {
         SortEnemyData();
-
+        
         roomGeneratorRef = GetComponent<RoomGenerator>();
 
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //    mousePos.z = 0;
+    //    Gizmos.DrawLine(mousePos + Vector3.zero,mousePos);
+    //}
+    //public void FixedUpdate()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Mouse0))
+    //    {
+    //        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //        mousePos.z = 0;
+    //        CheckIfCollider(mousePos);
+    //    }
+    //}
 }

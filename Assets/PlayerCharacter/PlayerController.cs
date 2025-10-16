@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public Transform directionOrigin;
     public Transform weaponParent;
     public GameObject weaponObj;
-    public float rotateDiff;
+   [HideInInspector] public float rotateDiff;
 
 
     Animator animator;

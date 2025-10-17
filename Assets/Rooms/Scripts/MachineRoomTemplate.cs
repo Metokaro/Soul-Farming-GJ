@@ -6,5 +6,12 @@ using UnityEngine;
 public class MachineRoomTemplate : RoomDataTemplate
 {
     public int minStartingLifeEnergy, maxStartingLifeEnergy;
+    [System.Serializable]
+    public class MachineCoordinates
+    {
+        public Vector3 location;
+        public GameObject machinePrefab;
+    }
 
+    public List<MachineCoordinates> machineCoordinates;
 }

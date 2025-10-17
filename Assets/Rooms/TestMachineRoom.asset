@@ -48,3 +48,8 @@ MonoBehaviour:
     offsetFromOrigin_y: 0
   minStartingLifeEnergy: 75
   maxStartingLifeEnergy: 200
+  machineCoordinates:
+  - location: {x: -10.6, y: 9.8, z: 0}
+    machinePrefab: {fileID: 7277031646299492264, guid: 0f0d43d27614d9045a418e2e015a5cff, type: 3}
+  - location: {x: -5.7, y: 9.8, z: 0}
+    machinePrefab: {fileID: 8891656989551385378, guid: e317428551512f84da98afeb5db5fc5d, type: 3}

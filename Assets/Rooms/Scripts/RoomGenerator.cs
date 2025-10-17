@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -26,13 +27,14 @@ public class RoomGenerator : MonoBehaviour
         public int basicEnemiesCount;
         public int intermediateEnemiesCount;
         public int advancedEnemiesCount;
-        public int totalEnemiesCount;
+        public HashSet<GameObject> enemiesInRoom = new();
         public int startingMana;
     }
 
     public class MachineRoomData : RoomData
     {
         public int startingLifeEnergy;
+        public HashSet<GameObject> machinesInRoom = new();
     }
 
     public class RoomData
@@ -137,6 +139,7 @@ public class RoomGenerator : MonoBehaviour
             MachineRoomTemplate currentMachineRoom = currentRoom as MachineRoomTemplate;
             MachineRoomData machineRoomData = currentRoom_Data as MachineRoomData;
             machineRoomData.startingLifeEnergy = Random.Range(currentMachineRoom.minStartingLifeEnergy, currentMachineRoom.maxStartingLifeEnergy + 1);
+            machineRoomData.machinesInRoom = SetMachinesInRoom();
             //Debug.Log(machineRoomData.startingLifeEnergy);
         }
         else if(currentRoom is EnemyRoomTemplate)
@@ -148,20 +151,20 @@ public class RoomGenerator : MonoBehaviour
             enemyRoomData.basicEnemiesCount = Random.Range(currentEnemyRoom.basicEnemiesCount_min, currentEnemyRoom.basicEnemiesCount_max + 1);
             enemyRoomData.intermediateEnemiesCount = Random.Range(currentEnemyRoom.intermediateEnemiesCount_min, currentEnemyRoom.intermediateEnemiesCount_max + 1);
             enemyRoomData.advancedEnemiesCount = Random.Range(currentEnemyRoom.advancedEnemiesCount_min, currentEnemyRoom.advancedEnemiesCount_max + 1);
-            enemyRoomData.totalEnemiesCount = enemyRoomData.basicEnemiesCount + enemyRoomData.intermediateEnemiesCount + enemyRoomData.advancedEnemiesCount;
             enemySpawnHandler.SpawnEnemies();
-            //Debug.Log("Basic enemies: " + enemyRoomData.basicEnemiesCount);
-            //Debug.Log("Intermediate enemies: " + enemyRoomData.intermediateEnemiesCount);
-            //Debug.Log("Advanced enemies: " + enemyRoomData.advancedEnemiesCount);
-            //Debug.Log("Total enemies: " + enemyRoomData.totalEnemiesCount);
-            //Debug.Log("Starting mana: " + enemyRoomData.startingMana);
-           
         }
     }
     public void OnExitRoom()
     {
         clearedRoomsCount++;
-        if(currentRoom is EnemyRoomTemplate) { roomPickerRef.IncreaseRoomsClearedCount(currentRoom as EnemyRoomTemplate); }
+        if(currentRoom is EnemyRoomTemplate) {
+            roomPickerRef.IncreaseRoomsClearedCount(currentRoom as EnemyRoomTemplate);
+            enemySpawnHandler.ClearEnemies();
+        }
+        else
+        {
+            DestroyMachines();
+        }
         roomPickerRef.currentRoomType = (roomPickerRef.currentRoomType == RoomPicker.RoomType.Enemy) ? RoomPicker.RoomType.Machine : RoomPicker.RoomType.Enemy;
         Destroy(exitObjInstance);
         Destroy(entranceObjInstance);
@@ -172,7 +175,30 @@ public class RoomGenerator : MonoBehaviour
         tilemapInfoList.Clear();
         roomPickerRef.PickCurrentRoom();
     }
+    
+    public void DestroyMachines()
+    {
+        foreach (GameObject enemy in (currentRoom_Data as MachineRoomData).machinesInRoom)
+        {
+            Destroy(enemy);
+        }
+        (currentRoom_Data as MachineRoomData).machinesInRoom.Clear();
+    }
 
+    public HashSet<GameObject> SetMachinesInRoom()
+    {
+
+        HashSet<GameObject> machines = new();
+        for(int i = 0; i < (currentRoom as MachineRoomTemplate).machineCoordinates.Count; i++)
+        {
+            GameObject machinePrefab = (currentRoom as MachineRoomTemplate).machineCoordinates.Select((x) => x.machinePrefab).ToList()[i];
+            Vector3 machineLocation = (currentRoom as MachineRoomTemplate).machineCoordinates[i].location - currentRoom.roomOrigin;
+            GameObject machineInstance = Instantiate(machinePrefab,machineLocation, Quaternion.identity);
+            machineInstance.GetComponent<MachineScript>().roomGenerator = this;
+            machines.Add(machineInstance);
+        }
+        return machines;
+    }
     public void CreateEntranceAndExit(Vector3Int startPos)
     {
         currentRoom.SetEntranceLocationOffset(out var entranceOffset);

@@ -22,6 +22,10 @@ public class PlayerController : MonoBehaviour
     int moveDeltaX;
     int moveDeltaY;
 
+    public float souls;
+    public float mana;
+    public float maxMana;
+
     public void Move()
     {
         moveDeltaX = (int)Input.GetAxisRaw("Horizontal");

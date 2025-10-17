@@ -28,7 +28,7 @@ public class EnemySpawnHandler : MonoBehaviour
         minSpawnRange_y = (floorTilemapCoordinates.minY + floorTilemapCoordinates.offsetFromOrigin_y) - (int)roomGeneratorRef.currentRoom.roomOrigin.y + 1;
         maxSpawnRange_x = (floorTilemapCoordinates.maxX + floorTilemapCoordinates.offsetFromOrigin_x) - (int)roomGeneratorRef.currentRoom.roomOrigin.x - 2;
         maxSpawnRange_y = (floorTilemapCoordinates.maxY + floorTilemapCoordinates.offsetFromOrigin_y) - (int)roomGeneratorRef.currentRoom.roomOrigin.y;
-        Debug.Log(" minX: " + minSpawnRange_x + " maxX: " + maxSpawnRange_x +  "minY:" + minSpawnRange_y + " maxY" + maxSpawnRange_y);
+        //Debug.Log(" minX: " + minSpawnRange_x + " maxX: " + maxSpawnRange_x +  "minY:" + minSpawnRange_y + " maxY" + maxSpawnRange_y);
     }
 
     public void TriggerGroupSpawn()
@@ -49,7 +49,7 @@ public class EnemySpawnHandler : MonoBehaviour
                 SpawnRandomEnemy(advancedEnemiesData.ToList());
             }
         }
-       
+        Debug.Log((roomGeneratorRef.currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom.Count);
     }
 
     public void SpawnRandomEnemy(List<EnemyData> enemyOptions)
@@ -65,48 +65,33 @@ public class EnemySpawnHandler : MonoBehaviour
             return;
         }
         GameObject enemyObjInstance = Instantiate(randomEnemy.enemyObjPrefab, spawnLocation, Quaternion.identity);
-        
+        (roomGeneratorRef.currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom.Add(enemyObjInstance);
 
     }
     bool CheckIfCollider(Vector3 position)
     {
-        Debug.Log(position);
         RaycastHit2D hit = Physics2D.Raycast(position,Vector3.zero, 1, unspawnableAreaLayerMask);
-        if(hit.collider != null)
-        {
-            Debug.Log(hit.collider.gameObject.name);
-        }
-        
+        //if(hit.collider != null)
+        //{
+        //    Debug.Log(hit.collider.gameObject.name);
+        //}        
         return hit;
+    }
+
+    public void ClearEnemies()
+    {
+       foreach(GameObject enemy in (roomGeneratorRef.currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom)
+        {
+            Destroy(enemy);
+        }
+        (roomGeneratorRef.currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom.Clear();
     }
 
     public void SpawnEnemies()
     {
+        roomGeneratorRef = GetComponent<RoomGenerator>();
+        SortEnemyData();
         SetSpawnArea();
         TriggerGroupSpawn();
     }
-
-    public void Start()
-    {
-        SortEnemyData();
-        
-        roomGeneratorRef = GetComponent<RoomGenerator>();
-
-    }
-
-    //private void OnDrawGizmos()
-    //{
-    //    Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //    mousePos.z = 0;
-    //    Gizmos.DrawLine(mousePos + Vector3.zero,mousePos);
-    //}
-    //public void FixedUpdate()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Mouse0))
-    //    {
-    //        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //        mousePos.z = 0;
-    //        CheckIfCollider(mousePos);
-    //    }
-    //}
 }

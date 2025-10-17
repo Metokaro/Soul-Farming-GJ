@@ -40,17 +40,14 @@ public class RoomPicker : MonoBehaviour
         HashSet<EnemyRoomTemplate> loadableLayouts = new();
         if (CheckForRoomClearReq(tier1ClearRequirement))
         {
-            Debug.Log("Can load tier 1 enemy rooms");
             loadableLayouts.AddRange(enemyRoomLayoutOptions.Where((x) => x.roomTier == EnemyRoomTemplate.RoomTiers.Tier1));
         }
         if (CheckForRoomClearReq(tier2ClearRequirement))
         {
-            Debug.Log("Can load tier 2 enemy rooms");
             loadableLayouts.AddRange(enemyRoomLayoutOptions.Where((x) => x.roomTier == EnemyRoomTemplate.RoomTiers.Tier2));
         }
         if (CheckForRoomClearReq(tier3ClearRequirement))
         {
-            Debug.Log("Can load tier 3 enemy rooms");
             loadableLayouts.AddRange(enemyRoomLayoutOptions.Where((x) => x.roomTier == EnemyRoomTemplate.RoomTiers.Tier3));
         }
         return loadableLayouts.ToList();
@@ -94,7 +91,6 @@ public class RoomPicker : MonoBehaviour
     {
         List<RoomDataTemplate> layoutsList = (currentRoomType == RoomType.Enemy) ? roomGeneratorRef.loadableEnemyRoomLayouts.Cast<RoomDataTemplate>().ToList() : roomGeneratorRef.machineRoomLayoutOptions.Cast<RoomDataTemplate>().ToList();
         int randomNumber = UnityEngine.Random.Range(0, layoutsList.Count);
-        Debug.Log(layoutsList.Count);
         roomGeneratorRef.currentRoom = layoutsList[randomNumber];
         roomGeneratorRef.GenerateRoom();
     }

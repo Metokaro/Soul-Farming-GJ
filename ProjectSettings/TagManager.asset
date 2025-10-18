@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - InteractableObject
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Player
   - Floor
   - FrontWalls
   - WallColliders

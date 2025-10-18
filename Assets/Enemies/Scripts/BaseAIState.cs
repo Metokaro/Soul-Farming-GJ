@@ -18,5 +18,5 @@ public interface IUpdate
 {
     public bool UpdatePerFrame {  get; set; }
     public bool IsFixedUpdate {get; set; }
-    public abstract void OnUpdate();
+    public abstract void OnUpdate(BaseAIBehaviour aiScript);
 }

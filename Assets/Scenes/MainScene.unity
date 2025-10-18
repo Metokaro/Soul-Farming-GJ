@@ -1401,6 +1401,145 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233143578}
   m_CullTransparentMesh: 1
+--- !u!1 &295518988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 295518989}
+  - component: {fileID: 295518990}
+  - component: {fileID: 295518991}
+  m_Layer: 0
+  m_Name: Pathfinder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &295518989
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295518988}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1498167099}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &295518990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295518988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  data:
+    dataString: UEsDBBQAAAgIAAAIIew+9l4UgwIAAFkFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VF1v2jAU/SvIz+uUMCh0bxtQtklt0di0h6UPJr4hFo4d+aNAK/777nVCk7JNQoo59+uce6/9wqR2NeTe2KWV4s4IYB8HjM7s3YDxaPvOvTQIp4hIZyrwVuaf9FaRb4Jg0LIwtlqILcyM8w7hgisHaLLGU7RG6GXADvi5uqGQI56GEzo94+kmGZzwmIP2YDvXs+PZrfEKOle8qkGs5TN0zuOz97hx06il9UjeD8eU3iglXUuG+WMdtX7nR5IqJEdhsTrpLEFuS08k+4EPReHAt4wsP86lxf40Gdln40vKVHG3a2g9cRWoxjS9GUZOTda7vxyu0mgurKm+nAunCRXxpcx3SDHnzvfa2ofnb5kHvedqxzcKfpWg783SmqAFGr0NFBocDOfd31dtsxLyXYc3VC/AUP9/OKThFOUfZkpWm9j3UQOslYnNjqMHi5P5ioTjYriWNqLE4qeDH3zb36DWcCut82hq3TXR25hgyZUtYs9ITfAzYzVEuCVdg+bKH1eYxl/O8MLWK3thueV0R9rire18BS5CItz5J8mFaWX23bAcfAtVvTJS+zVwm5e9fK40+ztw5UPwSmroFJHhHps4M1o3++f+EbYOtuB5L8zDwQcLc+55vAHICbdE9EOxoTFCB6VoIaMKSv4bVdDvkZpccqyrIszuDTJD8M33kRZhG6R4u+Zscg3TNM3FdAND2IwmV9PR9Yfp5HqTFqNkOpqMWbwHUmPPuVo1TWtHhRukOy0ad/78Ug2Wltfx6gnL90v5XJne+KUuzDq3APqhyfAqFiwWwRdCLIREmWvwXuq4e+wlY8rkOxDZa6IsNnZx8JZnXZaM1fLJeEIyNovvV8ZO7PQHUEsDBBQAAAgIAAAIIeyAX82sbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz1DM001FQSi9KLMgoBooYgjilmSkgdrSSuVmqhaFhcopFUqpRapKJua6FiZmxhblZkmGaiYGFibmpUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAAAIIew+9l4UgwIAAFkFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAAAIIeyAX82sbQAAAHgAAAAJACQAAAAAAAAAAAAAANACAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAiAMAAAAA
+    upgradeData: 
+    file_cachedStartup: {fileID: 0}
+    data_cachedStartup: 
+    cacheStartup: 0
+  showNavGraphs: 1
+  showUnwalkableNodes: 1
+  debugMode: 0
+  debugFloor: 0
+  debugRoof: 1
+  manualDebugFloorRoof: 0
+  showSearchTree: 0
+  unwalkableNodeDebugSize: 0.3
+  logPathResults: 1
+  maxNearestNodeDistance: 100
+  scanOnStartup: 1
+  fullGetNearestSearch: 0
+  prioritizeGraphs: 0
+  prioritizeGraphsLimit: 1
+  colorSettings:
+    _NodeConnection: {r: 1, g: 1, b: 1, a: 0.9}
+    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
+    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
+    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
+    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
+    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
+    _AreaColors: []
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  heuristic: 2
+  heuristicScale: 1
+  threadCount: 1
+  maxFrameTime: 10
+  minAreaSize: 0
+  batchGraphUpdates: 0
+  graphUpdateBatchingInterval: 0.2
+  euclideanEmbedding:
+    mode: 0
+    seed: 0
+    pivotPointRoot: {fileID: 0}
+    spreadOutCount: 1
+  showGraphs: 1
+--- !u!114 &295518991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295518988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1764de1de43cc4d19af52679d3eaae06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  desiredSimulationFPS: 20
+  workerThreads: 2
+  doubleBuffering: 0
+  symmetryBreakingBias: 0.1
+  movementPlane: 1
+  drawObstacles: 0
 --- !u!1 &398618829
 GameObject:
   m_ObjectHideFlags: 0
@@ -7598,7 +7737,7 @@ GameObject:
   - component: {fileID: 1498167100}
   - component: {fileID: 1498167101}
   m_Layer: 0
-  m_Name: RoomGenerator
+  m_Name: SceneHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7616,6 +7755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c53a49d606b1b40b3585f9fb7dda88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathfinder: {fileID: 295518990}
   enemyRoomLayoutOptions:
   - {fileID: 11400000, guid: 6ad0f049d0e09b7459c530efd9ef1c7d, type: 2}
   machineRoomLayoutOptions:
@@ -7646,7 +7786,8 @@ Transform:
   m_LocalPosition: {x: -13.04, y: 11.99, z: -0.08043325}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 295518989}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1498167100
@@ -10145,9 +10286,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2074051104}
   - component: {fileID: 2074051105}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

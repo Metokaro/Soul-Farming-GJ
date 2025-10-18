@@ -1,3 +1,4 @@
+using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using UnityEngine.Tilemaps;
 
 public class RoomGenerator : MonoBehaviour
 {
+    public AstarPath pathfinder;
     public List<EnemyRoomTemplate> enemyRoomLayoutOptions;
     public List<MachineRoomTemplate> machineRoomLayoutOptions;
     [HideInInspector] public List<EnemyRoomTemplate> loadableEnemyRoomLayouts = new();
@@ -18,7 +20,7 @@ public class RoomGenerator : MonoBehaviour
     GameObject exitObjInstance;
     GameObject entranceObjInstance;
 
-    public int clearedRoomsCount;
+    [HideInInspector]public int clearedRoomsCount;
     EnemySpawnHandler enemySpawnHandler;
     
 
@@ -86,10 +88,11 @@ public class RoomGenerator : MonoBehaviour
 
     public void GetTileMapTemplateInfo()
     {
-        foreach (var coordinates in currentRoom.copyCoordinates)
-        {
-            tilemapInfoList.Add(new() { roomSize = tilemapSizes[currentRoom.copyCoordinates.IndexOf(coordinates)], copyCoordinates = coordinates });
-        }
+        //foreach (var coordinates in currentRoom.copyCoordinates)
+        //{
+        //    tilemapInfoList.Add(new() { roomSize = tilemapSizes[currentRoom.copyCoordinates.IndexOf(coordinates)], copyCoordinates = coordinates });
+        //}
+        currentRoom.copyCoordinates.ForEach(x => { tilemapInfoList.Add(new() { roomSize = tilemapSizes[currentRoom.copyCoordinates.IndexOf(x)], copyCoordinates = x }); });
         foreach (var tilemapInfo in tilemapInfoList)
         {
             for (int x = 0; x < tilemapInfo.roomSize.roomSize_X; x++)
@@ -152,6 +155,7 @@ public class RoomGenerator : MonoBehaviour
             enemyRoomData.intermediateEnemiesCount = Random.Range(currentEnemyRoom.intermediateEnemiesCount_min, currentEnemyRoom.intermediateEnemiesCount_max + 1);
             enemyRoomData.advancedEnemiesCount = Random.Range(currentEnemyRoom.advancedEnemiesCount_min, currentEnemyRoom.advancedEnemiesCount_max + 1);
             enemySpawnHandler.SpawnEnemies();
+            
         }
     }
     public void OnExitRoom()
@@ -168,20 +172,14 @@ public class RoomGenerator : MonoBehaviour
         roomPickerRef.currentRoomType = (roomPickerRef.currentRoomType == RoomPicker.RoomType.Enemy) ? RoomPicker.RoomType.Machine : RoomPicker.RoomType.Enemy;
         Destroy(exitObjInstance);
         Destroy(entranceObjInstance);
-        foreach(Tilemap tilemap in originalTilemaps)
-        {
-            tilemap.ClearAllTiles();
-        }
+        originalTilemaps.ForEach((x) => x.ClearAllTiles());
         tilemapInfoList.Clear();
         roomPickerRef.PickCurrentRoom();
     }
     
     public void DestroyMachines()
     {
-        foreach (GameObject enemy in (currentRoom_Data as MachineRoomData).machinesInRoom)
-        {
-            Destroy(enemy);
-        }
+        (currentRoom_Data as MachineRoomData).machinesInRoom.ToList().ForEach((x) => Destroy(x));
         (currentRoom_Data as MachineRoomData).machinesInRoom.Clear();
     }
 
@@ -215,8 +213,33 @@ public class RoomGenerator : MonoBehaviour
         SetTilemapInfo(new());
         CreateEntranceAndExit(new());
         OnEnterRoom();
+        StartCoroutine(LoadPathfinder());
     }
 
+    IEnumerator LoadPathfinder()
+    {
+        yield return new WaitForEndOfFrame();
+        pathfinder.data.gridGraph.center = GetMiddleOfFloor();
+        float nodeSize = pathfinder.data.gridGraph.nodeSize;
+        float multiplier = 2;
+        pathfinder.data.gridGraph.SetDimensions(Mathf.FloorToInt((GetSizeOfFloor().x * multiplier) / nodeSize), Mathf.FloorToInt((GetSizeOfFloor().y * multiplier) / nodeSize), nodeSize);
+        pathfinder.Scan(pathfinder.data.gridGraph);
+    }
+    Vector3 GetMiddleOfFloor()
+    {
+        RoomDataTemplate.TilemapCopyCoordinates floorCoordinates =  currentRoom.copyCoordinates.FirstOrDefault((x) => x.targetTilemap == RoomDataTemplate.TilemapTypes.Floor);
+        Vector3 floorStartPos = new(floorCoordinates.offsetFromOrigin_x, floorCoordinates.offsetFromOrigin_y);
+        Vector3 floorMiddlePos = floorStartPos + new Vector3((floorCoordinates.maxX - floorCoordinates.minX) * 0.5f, (floorCoordinates.maxY - floorCoordinates.minY) * 0.5f);
+        return floorMiddlePos;
+
+    }
+
+    Vector3Int GetSizeOfFloor()
+    {
+        RoomDataTemplate.TilemapCopyCoordinates floorCoordinates = currentRoom.copyCoordinates.FirstOrDefault((x) => x.targetTilemap == RoomDataTemplate.TilemapTypes.Floor);
+        Vector3Int floorSize = new(floorCoordinates.maxX - floorCoordinates.minX, floorCoordinates.maxY - floorCoordinates.minY);
+        return floorSize;
+    }
     // Start is called before the first frame update
     void Start()
     {

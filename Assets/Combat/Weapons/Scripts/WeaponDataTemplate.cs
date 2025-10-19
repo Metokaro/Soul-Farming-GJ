@@ -8,6 +8,8 @@ public class WeaponDataTemplate : ScriptableObject
     public string weaponName;
     public float DefaultDamage;
     public float DefaultWeaponSpeed;
+    public float lifeEnergyCost;
+    public GameObject weaponPrefab;
     public enum WeaponTypes
     {
         Melee = 1,

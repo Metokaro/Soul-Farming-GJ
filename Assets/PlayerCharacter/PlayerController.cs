@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static AbilitiesHandler;
 
@@ -8,16 +9,15 @@ public class PlayerController : MonoBehaviour
 {
     public int moveSpeed = 3;
     public Transform directionOrigin;
-    public Transform weaponParent;
-    public GameObject weaponObj;
-   [HideInInspector] public float rotateDiff;
-
-
-    Animator animator;
-    Rigidbody2D rb;
-    SpriteRenderer spriteRenderer;
-    public AbilitiesHandler abilitiesHandler;
-   [HideInInspector] public PlayerStats playerStats;
+    public PlayerEquipSystem equipSystem;
+    [HideInInspector] public float rotateDiff;
+    public List<WeaponDataTemplate> obtainableWeapons;
+    [HideInInspector] public bool pauseRotation;
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
+    [HideInInspector] public AbilitiesHandler abilitiesHandler;
+    [HideInInspector] public PlayerStats playerStats;
     [HideInInspector] public PlayerLevellingSystem playerLevellingSystem;
     int moveDeltaX;
     int moveDeltaY;
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         moveDeltaX = (int)Input.GetAxisRaw("Horizontal");
         moveDeltaY = (int)Input.GetAxisRaw("Vertical");
         Vector2 moveDelta = new(moveDeltaX , moveDeltaY );
-        weaponObj.GetComponent<Animator>().SetBool("bobbingEnabled", animator.GetBool("isWalking"));
+        equipSystem.currentWeaponObj.GetComponent<Animator>().SetBool("bobbingEnabled", animator.GetBool("isWalking"));
         rb.velocity = moveDelta.normalized * moveSpeed;
     }
 
@@ -41,7 +41,6 @@ public class PlayerController : MonoBehaviour
         float spriteRendererPivotY = spriteRenderer.sprite.pivot.y - Mathf.FloorToInt(spriteRenderer.sprite.pivot.y);
         float xDifference = mousePos.x - transform.position.x;
         float yDifference = mousePos.y - (transform.position.y + transform.localScale.y * (0.5f - spriteRendererPivotY));
-        bool pauseRotation = weaponObj.GetComponent<BaseWeaponScript>() is ScytheScript && weaponObj.GetComponent<ScytheScript>().rotateParent;
         if (pauseRotation == false)
         {
             //Debug.Log(spriteRendererPivotY);
@@ -49,30 +48,16 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Down", yDifference < 0 - (transform.localScale.y * 0.5f));
             animator.SetBool("Up", yDifference > 0 + (transform.localScale.y * 0.5f));
         }
-       
-        
     }
 
-    public void MouseFaceDirection(out Vector3 mousePosout)
+    public void MouseFaceDirection(out Vector3 mousePosOutput, out float _angle)
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint( Input.mousePosition );
         mousePos.z = 0;
-        mousePosout = mousePos;
+        mousePosOutput = mousePos;
         Vector3 lookDir = (mousePos - directionOrigin.transform.position).normalized;
         float angle = MathF.Atan2(lookDir.y,lookDir.x) * Mathf.Rad2Deg;
-        bool pauseRotation = weaponObj.GetComponent<BaseWeaponScript>() is ScytheScript && weaponObj.GetComponent<ScytheScript>().rotateParent;
-        
-        if(pauseRotation == false)
-        {
-            directionOrigin.transform.eulerAngles = new(0, 0, angle);
-        }
-        float changeYAnimation = 1;
-        if (weaponObj.GetComponent<BaseWeaponScript>() is ScytheScript)
-        {
-            changeYAnimation = weaponObj.GetComponent<ScytheScript>().yChange;
-        }
-        rotateDiff = ((spriteRenderer.flipX && animator.GetBool("Up") == false && animator.GetBool("Down") == false) || (animator.GetBool("Up") && spriteRenderer.flipX == false) || (animator.GetBool("Down")) && spriteRenderer.flipX) ? -1 * changeYAnimation : 1 * changeYAnimation;
-        weaponParent.transform.localScale = new(1, rotateDiff, 1);
+        _angle = angle;
     }
 
     // Start is called before the first frame update
@@ -81,7 +66,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        abilitiesHandler.InitializeUnlockedAbilities(weaponObj.GetComponent<BaseWeaponScript>().weaponData.unlockedAbilities);
+        equipSystem = new(this, directionOrigin.Find("WeaponParent"));
+        equipSystem.EquipNewWeapon(obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Scythe"));
+        abilitiesHandler = GetComponent<AbilitiesHandler>();
+        abilitiesHandler.InitializeUnlockedAbilities(equipSystem.currentWeaponObj.GetComponent<BaseWeaponScript>().weaponData.unlockedAbilities);
      
       
     }
@@ -95,9 +83,9 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         
-        Move();
-        MouseFaceDirection(out var MousePos) ;
-        SetAnimations(MousePos);
+        Move(); Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        SetAnimations(mousePos);
        
     }
     private void Update()

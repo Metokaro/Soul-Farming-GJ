@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MachineScript : InteractableObject
@@ -7,6 +9,7 @@ public class MachineScript : InteractableObject
     public GameObject machineInteractionUI;
     [HideInInspector] public float lifeEnergy;
     [HideInInspector] public RoomGenerator roomGenerator;
+    [HideInInspector] public PlayerController playerRef;
 
     public override void OnInteract()
     {
@@ -21,9 +24,6 @@ public class MachineScript : InteractableObject
 
     public void UpdateTotalLifeEnergy(float lifeEnergyInput)
     {
-        foreach(GameObject machine in (roomGenerator.currentRoom_Data as RoomGenerator.MachineRoomData).machinesInRoom)
-        {
-            machine.GetComponent<MachineScript>().lifeEnergy = lifeEnergyInput;
-        }
+        (roomGenerator.currentRoom_Data as RoomGenerator.MachineRoomData).machinesInRoom.ToList().ForEach(r => { r.GetComponent<MachineScript>().lifeEnergy = lifeEnergyInput; });
     }
 }

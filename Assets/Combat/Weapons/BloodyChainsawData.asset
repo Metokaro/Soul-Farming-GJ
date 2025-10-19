@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c6a743ff064e8c42b1938b119a70947, type: 3}
-  m_Name: ScytheData
+  m_Name: BloodyChainsawData
   m_EditorClassIdentifier: 
-  weaponName: Scythe
-  DefaultDamage: 25
-  DefaultWeaponSpeed: 0.8
-  lifeEnergyCost: 106
-  weaponPrefab: {fileID: 9110893131778609960, guid: 483e86a88d228e342a237d24b164f298, type: 3}
+  weaponName: Bloody Chainsaw
+  DefaultDamage: 7
+  DefaultWeaponSpeed: 0.2
+  lifeEnergyCost: 140
+  weaponPrefab: {fileID: 0}
   WeaponType: 1
-  unlockedAbilities:
-  - {fileID: 11400000, guid: b476fa7a2f6dc48439fd057d2a252dac, type: 2}
-  - {fileID: 11400000, guid: 877eb0bc623b1f04a9934bec0e166609, type: 2}
+  unlockedAbilities: []

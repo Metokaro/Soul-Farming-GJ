@@ -7,7 +7,6 @@ public class SoulConverterScript : MachineScript
 {
     public float lifeEnergyPerSoul;
     SoulConverterUI uiScript;
-    PlayerController playerRef;
     float outputAmount;
     float inputAmount;
     public override void Start()
@@ -20,7 +19,6 @@ public class SoulConverterScript : MachineScript
     {
         base.OnInteract();
        uiScript = machineInteractionUI.GetComponent<SoulConverterUI>();
-        playerRef = FindObjectOfType<PlayerController>();
         UpdateDisplay();
 
     }

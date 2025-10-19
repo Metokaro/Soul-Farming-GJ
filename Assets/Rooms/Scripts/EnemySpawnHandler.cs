@@ -49,7 +49,6 @@ public class EnemySpawnHandler : MonoBehaviour
                 SpawnRandomEnemy(advancedEnemiesData.ToList());
             }
         }
-        Debug.Log((roomGeneratorRef.currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom.Count);
     }
 
     public void SpawnRandomEnemy(List<EnemyData> enemyOptions)

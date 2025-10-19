@@ -193,6 +193,7 @@ public class RoomGenerator : MonoBehaviour
             Vector3 machineLocation = (currentRoom as MachineRoomTemplate).machineCoordinates[i].location - currentRoom.roomOrigin;
             GameObject machineInstance = Instantiate(machinePrefab,machineLocation, Quaternion.identity);
             machineInstance.GetComponent<MachineScript>().roomGenerator = this;
+            machineInstance.GetComponent<MachineScript>().playerRef = playerController;
             machines.Add(machineInstance);
         }
         return machines;

@@ -27,7 +27,6 @@ public class AIStateMachine
         currentAIStateObj = aiStateObjList.FirstOrDefault((x) => x.state == state);
         currentAIState = state;
         currentAIStateObj.EnterState(aiScriptRef,prevAIState);
-        Debug.Log(currentAIState + ":" + currentAIStateObj);
     }
 
     public void UpdateState(bool perFrame, bool isFixedUpdate)
@@ -40,14 +39,12 @@ public class AIStateMachine
             }
             else if ((currentAIStateObj as IUpdate).UpdatePerFrame)
             {
-                Debug.Log("Perframe");
                 if (isFixedUpdate == false)
                 {
                     (currentAIStateObj as IUpdate).OnUpdate(aiScriptRef);
                 }
                 else if ((currentAIStateObj as IUpdate).IsFixedUpdate)
                 {
-                    Debug.Log("PerframeFU");
                     (currentAIStateObj as IUpdate).OnUpdate(aiScriptRef);
                 }
             }

@@ -6,7 +6,6 @@ public class ManaRefresherScript : MachineScript
 {
     public float manaPerLifeEnergy;
     ManaRefresherUI uiScript;
-    PlayerController playerRef;
     float output;
     float input;
     float maxOutput;
@@ -14,7 +13,6 @@ public class ManaRefresherScript : MachineScript
     {
         base.OnInteract();
         uiScript = machineInteractionUI.GetComponent<ManaRefresherUI>();
-        playerRef = FindObjectOfType<PlayerController>();
         maxOutput = CalculateMaxManaOutput();
         UpdateDisplay();
     }

@@ -21,19 +21,26 @@ public class PlayerInteraction : MonoBehaviour
             {
                 interactableObject = hit.collider.transform.parent.GetComponent<InteractableObject>();
                 interactableObject.OnMouseHover();
+                
                 interactionDisplayUI.SetActive(true);
                 interactionDisplayUI.GetComponent<InteractPanelDisplay>().nameDisplay.text = interactableObject.objectName;
                 interactionDisplayUI.GetComponent<InteractPanelDisplay>().tooltipDisplay.text = interactableObject.interactTooltip;
-
+                if(selectedObject != null && selectedObject != hit.collider.transform.parent.GetComponent<InteractableObject>())
+                {
+                    selectedObject.OnMouseLeave();
+                }
             }
 
         }
         else if(selectedObject != null)
         {
+            //Debug.Log(selectedObject + ":" + hit.collider.transform.parent.GetComponent<InteractableObject>());
             selectedObject.OnMouseLeave();
             interactionDisplayUI.SetActive(false);
             selectedObject = null;
         }
+        
+        
         return interactableObject;
     }
 

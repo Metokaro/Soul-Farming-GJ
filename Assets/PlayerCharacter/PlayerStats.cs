@@ -47,6 +47,7 @@ public class PlayerStats
                 moveSpeed += moveSpeedIncrement * incrementLevel;
                 break;
         }
+        
     }
 
     public void DisplayStats(TextMeshProUGUI powerDisplay, TextMeshProUGUI atkSpeedDisplay, TextMeshProUGUI maxHealthDisplay, TextMeshProUGUI defenseDisplay, TextMeshProUGUI moveSpeedDisplay)

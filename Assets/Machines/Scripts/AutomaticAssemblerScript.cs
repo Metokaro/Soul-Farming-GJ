@@ -15,11 +15,16 @@ public class AutomaticAssemblerScript : MachineScript
     {
         base.OnInteract();
         automaticAssembler_UI = machineInteractionUI.GetComponent<AutomaticAssembler_UI>();
+        
+    }
+    public override void Start()
+    {
+        base.Start();
         SelectRandomCraftableWeapon();
     }
     public void SelectRandomCraftableWeapon()
     {
-        currentCraftableWeapon = obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Nailgun");
+        currentCraftableWeapon = obtainableWeapons[Random.Range(0, obtainableWeapons.Count)];
         lifeEnergyCost = currentCraftableWeapon.lifeEnergyCost;
         /*currentCraftableWeapon = obtainableWeapons[Random.Range(0, obtainableWeapons.Count)];*/
         UpdateDisplay();

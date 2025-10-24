@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = xDifference < 0;
             animator.SetBool("Down", yDifference < 0 - (transform.localScale.y * 0.5f));
             animator.SetBool("Up", yDifference > 0 + (transform.localScale.y * 0.5f));
+            equipSystem.currentWeaponObj.GetComponent<SpriteRenderer>().sortingOrder = animator.GetBool("Up") ? 0 : 1;
         }
     }
 
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         equipSystem = new(this, directionOrigin.Find("WeaponParent"));
-        equipSystem.EquipNewWeapon(obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Scythe"));
+        equipSystem.EquipNewWeapon(obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Cursed Hatchet"));
         abilitiesHandler = GetComponent<AbilitiesHandler>();
         abilitiesHandler.InitializeUnlockedAbilities(equipSystem.currentWeaponObj.GetComponent<BaseWeaponScript>().weaponData.unlockedAbilities);
      

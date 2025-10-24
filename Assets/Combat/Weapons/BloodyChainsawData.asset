@@ -16,6 +16,6 @@ MonoBehaviour:
   DefaultDamage: 7
   DefaultWeaponSpeed: 0.2
   lifeEnergyCost: 140
-  weaponPrefab: {fileID: 0}
+  weaponPrefab: {fileID: 8694662403913800570, guid: 9e7f6d3c675940c47a1b1ac5de66559f, type: 3}
   WeaponType: 1
   unlockedAbilities: []

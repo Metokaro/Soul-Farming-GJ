@@ -40,7 +40,6 @@ public class AlchemyTableScript : MachineScript
             }
             availableStatsToUpgrade.Add(referenceStats[UnityEngine.Random.Range(0, referenceStats.Count)]);
         }
-        Debug.Log(AlchemyTable_UI.statUIs);
         AlchemyTable_UI.statUIs.ForEach((x) => HideStatUI(x));
         AlchemyTable_UI.statUIs.Where((x) => availableStatsToUpgrade.Contains(x.stat)).ToList().ForEach((x) => ShowStatUI(x));
 

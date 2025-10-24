@@ -14,12 +14,13 @@ public class AutomaticAssemblerScript : MachineScript
     public override void OnInteract()
     {
         base.OnInteract();
-        automaticAssembler_UI = machineInteractionUI.GetComponent<AutomaticAssembler_UI>();
+        
         
     }
     public override void Start()
     {
         base.Start();
+        automaticAssembler_UI = machineInteractionUI.GetComponent<AutomaticAssembler_UI>();
         SelectRandomCraftableWeapon();
     }
     public void SelectRandomCraftableWeapon()

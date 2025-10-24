@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 8694662403913800570}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.192, y: -0.014, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.122000165, y: -0.15299994, z: 0}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -119,3 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7492cd3cf2cb07748bdf628e3ee152ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  calculatedDamage: 0
+  calculatedWeaponSpeed: 0
+  playerRef: {fileID: 0}
+  weaponData: {fileID: 0}
+  weaponAnimator: {fileID: 0}

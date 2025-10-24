@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         equipSystem = new(this, directionOrigin.Find("WeaponParent"));
-        equipSystem.EquipNewWeapon(obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Cursed Hatchet"));
+        equipSystem.EquipNewWeapon(obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Pumpkin Launcher"));
         abilitiesHandler = GetComponent<AbilitiesHandler>();
         abilitiesHandler.InitializeUnlockedAbilities(equipSystem.currentWeaponObj.GetComponent<BaseWeaponScript>().weaponData.unlockedAbilities);
      

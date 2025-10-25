@@ -25,13 +25,18 @@ public class PlayerController : MonoBehaviour
     public float souls;
     public float mana;
     public float maxMana;
+    [HideInInspector] public bool canMove;
 
     public void Move()
     {
+        if(canMove == false)
+        {
+            return;
+        }
         moveDeltaX = (int)Input.GetAxisRaw("Horizontal");
         moveDeltaY = (int)Input.GetAxisRaw("Vertical");
         Vector2 moveDelta = new(moveDeltaX , moveDeltaY );
-        equipSystem.currentWeaponObj.GetComponent<Animator>().SetBool("bobbingEnabled", animator.GetBool("isWalking"));
+        
         rb.velocity = moveDelta.normalized * moveSpeed;
     }
 
@@ -70,12 +75,13 @@ public class PlayerController : MonoBehaviour
         equipSystem = new(this, directionOrigin.Find("WeaponParent"));
         equipSystem.EquipNewWeapon(obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Scythe"));
         abilitiesHandler = GetComponent<AbilitiesHandler>();
-        abilitiesHandler.InitializeUnlockedAbilities(equipSystem.currentWeaponObj.GetComponent<BaseWeaponScript>().weaponData.unlockedAbilities);
+        
      
       
     }
     private void Awake()
     {
+        canMove = true;
         playerStats = new();
         playerLevellingSystem = new();
     }
@@ -84,7 +90,8 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         
-        Move(); Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Move(); 
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
         SetAnimations(mousePos);
        

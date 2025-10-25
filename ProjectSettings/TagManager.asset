@@ -28,8 +28,8 @@ TagManager:
   - EnemyHitbox
   - 
   - 
-  - 
-  - 
+  - Enemy
+  - PlayerCharacter
   - 
   - 
   - 

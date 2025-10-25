@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 18569684}
   - component: {fileID: 18569686}
   - component: {fileID: 18569687}
+  - component: {fileID: 18569688}
   m_Layer: 5
   m_Name: AbilitySlot1
   m_TagString: Untagged
@@ -200,6 +201,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &18569688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18569683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b14264aeda4704bb618b1f9b8ed676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownBar: {fileID: 190698977}
 --- !u!1 &19607780
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +600,7 @@ GameObject:
   - component: {fileID: 128065302}
   - component: {fileID: 128065304}
   - component: {fileID: 128065305}
+  - component: {fileID: 128065306}
   m_Layer: 5
   m_Name: AbilitySlot3
   m_TagString: Untagged
@@ -653,6 +668,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &128065306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128065301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b14264aeda4704bb618b1f9b8ed676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownBar: {fileID: 1136214304}
 --- !u!1 &160732680
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,7 +882,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 19607781}
   m_HandleRect: {fileID: 0}
@@ -2137,6 +2165,7 @@ GameObject:
   - component: {fileID: 434002929}
   - component: {fileID: 434002931}
   - component: {fileID: 434002932}
+  - component: {fileID: 434002933}
   m_Layer: 5
   m_Name: AbilitySlot4
   m_TagString: Untagged
@@ -2204,6 +2233,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &434002933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434002928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b14264aeda4704bb618b1f9b8ed676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownBar: {fileID: 624682974}
 --- !u!1 &478015904
 GameObject:
   m_ObjectHideFlags: 0
@@ -2598,7 +2640,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 2135633863}
   m_HandleRect: {fileID: 0}
@@ -6489,7 +6531,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 478015905}
   m_HandleRect: {fileID: 0}
@@ -7184,7 +7226,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 73231370}
   m_HandleRect: {fileID: 0}
@@ -9731,6 +9773,7 @@ GameObject:
   - component: {fileID: 2047833781}
   - component: {fileID: 2047833783}
   - component: {fileID: 2047833784}
+  - component: {fileID: 2047833785}
   m_Layer: 5
   m_Name: AbilitySlot2
   m_TagString: Untagged
@@ -9798,6 +9841,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2047833785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047833780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0b14264aeda4704bb618b1f9b8ed676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownBar: {fileID: 1461899488}
 --- !u!1 &2135633862
 GameObject:
   m_ObjectHideFlags: 0
@@ -9885,6 +9941,10 @@ PrefabInstance:
       propertyPath: interactionDisplayUI
       value: 
       objectReference: {fileID: 929637489}
+    - target: {fileID: 2562329903920345294, guid: e2ad25f784cb6174f9625b94270a9ba7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2573681393524876699, guid: e2ad25f784cb6174f9625b94270a9ba7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.196
@@ -9923,6 +9983,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2573681393524876699, guid: e2ad25f784cb6174f9625b94270a9ba7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3757826651876627332, guid: e2ad25f784cb6174f9625b94270a9ba7, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5124161617479222650, guid: e2ad25f784cb6174f9625b94270a9ba7, type: 3}

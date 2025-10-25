@@ -13,4 +13,5 @@ public class AbilityDataTemplate : ScriptableObject
         Passive, Active
     }
     public AbilityTypes abilityType;
+    public float cooldown;
 }

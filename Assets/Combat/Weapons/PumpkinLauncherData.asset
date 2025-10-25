@@ -18,4 +18,5 @@ MonoBehaviour:
   lifeEnergyCost: 154
   weaponPrefab: {fileID: 8694662403913800570, guid: 1c88b775cf413a5419af801320c82c59, type: 3}
   WeaponType: 2
-  unlockedAbilities: []
+  unlockedAbilities:
+  - {fileID: 11400000, guid: 877eb0bc623b1f04a9934bec0e166609, type: 2}

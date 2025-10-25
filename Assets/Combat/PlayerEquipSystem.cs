@@ -22,8 +22,10 @@ public class PlayerEquipSystem
 
         GameObject newWeapon = GameObject.Instantiate(newWeaponData.weaponPrefab, weaponParent);
         currentWeaponObj = newWeapon;
-        currentWeaponObj.GetComponent<BaseWeaponScript>().weaponData = newWeaponData;
-        currentWeaponObj.GetComponent<BaseWeaponScript>().playerRef = playerControllerRef;
-        currentWeaponObj.GetComponent<BaseWeaponScript>().OnEquip();
+        BaseWeaponScript weaponScript = currentWeaponObj.GetComponent<BaseWeaponScript>();
+        weaponScript.weaponData = newWeaponData;
+        weaponScript.playerRef = playerControllerRef;
+        weaponScript.OnEquip();
+        playerControllerRef.abilitiesHandler.InitializeUnlockedAbilities(weaponScript.weaponData.unlockedAbilities);
     }
 }

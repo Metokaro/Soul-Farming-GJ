@@ -14,6 +14,11 @@ public class BaseAIBehaviour : MonoBehaviour
     public LayerMask potentialTargetsLayerMask;
     public float detectionRadius;
     public float pursueDistance;
+
+    public float health;
+    public float maxHealth;
+    public EnemyHealthDisplay healthDisplay;
+
     void Start()
     {
         aiPathfinder = GetComponent<AIPath>();
@@ -21,6 +26,7 @@ public class BaseAIBehaviour : MonoBehaviour
         aiStateMachine = new(this);
         spawnPosition = transform.position;
         aiStateMachine.SetState(AIStateMachine.AIStates.Idle);
+         health =  maxHealth;
     }
     public void DetectTargetsInRange()
     {
@@ -49,6 +55,16 @@ public class BaseAIBehaviour : MonoBehaviour
         endPointScript.movingAgent = this.gameObject;
         endPointScript.stateAfterReachingPoint = nextState;
     }
+    public void TakeDamage(float takenDamage)
+    {
+        health -= takenDamage;
+        healthDisplay.UpdateHealthBar(health, maxHealth);
+        if(health < 1)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

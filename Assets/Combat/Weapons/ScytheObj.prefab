@@ -125,4 +125,5 @@ MonoBehaviour:
   weaponData: {fileID: 11400000, guid: 34f7dcf22fc4391418c59c8371e6b61d, type: 2}
   weaponAnimator: {fileID: 0}
   rotateParent: 0
+  hitboxSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   yChange: 0

@@ -119,3 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209d9434c76710241a666a601896eb25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  calculatedDamage: 0
+  calculatedWeaponSpeed: 0
+  playerRef: {fileID: 0}
+  weaponData: {fileID: 0}
+  weaponAnimator: {fileID: 0}
+  hitboxObj: {fileID: 0}
+  hitboxSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}

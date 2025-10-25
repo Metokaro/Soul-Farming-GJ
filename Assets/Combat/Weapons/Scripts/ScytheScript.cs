@@ -5,8 +5,10 @@ using UnityEngine;
 public class ScytheScript : BaseWeaponScript
 {
    public bool rotateParent;
+
     bool attackCooldownActive;
     public float yChange;
+   
     public override void Attack()
     {
         if (attackCooldownActive)
@@ -16,6 +18,7 @@ public class ScytheScript : BaseWeaponScript
         }
 
         GetComponent<Animator>().SetTrigger("OnAttack");
+        SpawnHitbox(new(0.65f, 0.4f), playerRef.directionOrigin.transform.position + playerRef.directionOrigin.transform.right * 0.4f, HitboxSpawnScript.HitboxType.OneHit);
         StartCoroutine(Cooldown());
         IEnumerator Cooldown()
         {
@@ -24,6 +27,8 @@ public class ScytheScript : BaseWeaponScript
             attackCooldownActive = false;
         }
     }
+
+    
 
     public override void WhileHolding()
     {
@@ -44,6 +49,7 @@ public class ScytheScript : BaseWeaponScript
     public void OnAnimationEnd()
     {
         rotateParent = false;
+        Destroy(hitboxObj);
     }
 
     // Update is called once per frame

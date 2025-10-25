@@ -15,9 +15,15 @@ public class PumpkinProjectileScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collisionLayers.Contains(LayerMask.LayerToName(collision.transform.gameObject.layer)))
+        string hitColliderLayer = LayerMask.LayerToName(collision.transform.gameObject.layer);
+        if (collisionLayers.Contains(hitColliderLayer))
         {
             ReturnToPool();
+            if(hitColliderLayer == "EnemyHitbox")
+            {
+                BaseAIBehaviour aiScript = collision.transform.parent.GetComponent<BaseAIBehaviour>();
+                aiScript.TakeDamage(parentScript.calculatedDamage);
+            }
         }
     }
     void ReturnToPool()

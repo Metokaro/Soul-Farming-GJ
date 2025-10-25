@@ -15,6 +15,7 @@ public class CursedHatchetScript : BaseWeaponScript
             return;
         }
         animator.SetTrigger("OnSwing");
+        SpawnHitbox(new(0.3f, 0.8f), playerRef.directionOrigin.transform.position + playerRef.directionOrigin.transform.right * 0.5f, HitboxSpawnScript.HitboxType.OneHit);
         StartCoroutine(Cooldown());
         IEnumerator Cooldown()
         {
@@ -32,6 +33,7 @@ public class CursedHatchetScript : BaseWeaponScript
     public void OnSwingEnd()
     {
         pauseRotate = false;
+        Destroy(hitboxObj);
     }
 
     public override void WhileHolding()

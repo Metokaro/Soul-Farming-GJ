@@ -10,7 +10,8 @@ public class AIStateMachine
     {
         Idle,
         Pursuing,
-        Retreating
+        Retreating,
+        Stunned
     }
     public AIStates currentAIState;
     public AIStates prevAIState;
@@ -53,7 +54,7 @@ public class AIStateMachine
 
     public AIStateMachine(BaseAIBehaviour _aiScript) 
     { 
-        aiStateObjList = new() { new AIState_Idle(AIStates.Idle),new AIState_Pursuing(AIStates.Pursuing), new AIState_Retreating(AIStates.Retreating) };
+        aiStateObjList = new() { new AIState_Idle(AIStates.Idle),new AIState_Pursuing(AIStates.Pursuing), new AIState_Retreating(AIStates.Retreating), new AIState_Stunned(AIStates.Stunned) };
         aiScriptRef = _aiScript;
     
     }

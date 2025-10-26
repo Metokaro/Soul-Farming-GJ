@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using static AbilitiesHandler;
 
 public class PlayerController : MonoBehaviour
 {
-    public int moveSpeed = 3;
+    public float moveSpeed = 3;
     public Transform directionOrigin;
     public PlayerEquipSystem equipSystem;
     [HideInInspector] public float rotateDiff;
@@ -21,11 +23,17 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PlayerLevellingSystem playerLevellingSystem;
     int moveDeltaX;
     int moveDeltaY;
-
+    public LayerMask targetableLayerMask;
     public float souls;
-    public float mana;
+    [HideInInspector] public float mana;
     public float maxMana;
+    [HideInInspector]public float health;
+    public float maxHealth;
+    [HideInInspector] public PlayerScreenScript playerScreenRef;
     [HideInInspector] public bool canMove;
+    [HideInInspector] public bool canTakeDamage;
+    [HideInInspector] public delegate void OnTakeDamageFunction();
+    [HideInInspector] public OnTakeDamageFunction onTakeDamageFunction;
 
     public void Move()
     {
@@ -66,6 +74,12 @@ public class PlayerController : MonoBehaviour
         _angle = angle;
     }
 
+    public void DepleteMana(float amount)
+    {
+        mana -= amount;
+        playerScreenRef.UpdateManaBar();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,10 +87,14 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         equipSystem = new(this, directionOrigin.Find("WeaponParent"));
-        equipSystem.EquipNewWeapon(obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Scythe"));
+        equipSystem.EquipNewWeapon(obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Bloody Chainsaw"));
         abilitiesHandler = GetComponent<AbilitiesHandler>();
+        canTakeDamage = true;
+        health = maxHealth;
         
-     
+        mana = maxMana * 0.25f;
+        
+        playerScreenRef.UpdateManaBar();
       
     }
     private void Awake()
@@ -84,6 +102,19 @@ public class PlayerController : MonoBehaviour
         canMove = true;
         playerStats = new();
         playerLevellingSystem = new();
+    }
+
+    public void TakeDamage(float damageTaken)
+    {
+        onTakeDamageFunction?.Invoke();
+        if (canTakeDamage == false)
+        { return; }
+        damageTaken -= Mathf.RoundToInt(damageTaken * (playerStats.defenseMultiplier * 0.15f));
+        health -= damageTaken;
+        if(health <= 0 ) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        playerScreenRef.UpdateHealthBar();
     }
 
     // Update is called once per frame
@@ -100,18 +131,29 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            playerLevellingSystem.IncreaseExp(3);
+            TakeDamage(20);
         }
-        if (abilitiesHandler.abilities.Count > 0)
+        CheckForAbilities();
+       
+    }
+
+    void CheckForAbilities()
+    {
+        if (abilitiesHandler.abilities.Count < 1)
         {
-            foreach (Ability ability in abilitiesHandler.abilities)
+            return;
+        }
+        foreach (Ability ability in abilitiesHandler.abilities)
+        {
+            if (Input.GetKeyDown(ability.keybind))
             {
-                if (Input.GetKeyDown(ability.keybind))
+                if (ability.abilityData.manaCost > mana)
                 {
-                    ability.abilityScript.OnAbilityCast();
+                    return;
                 }
+                ability.abilityScript.OnAbilityCast();
+                DepleteMana(ability.abilityData.manaCost);
             }
         }
-       
     }
 }

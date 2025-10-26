@@ -31,7 +31,7 @@ public class ManaRefresherScript : MachineScript
         uiScript.conversionSlider.value = 0;
         maxOutput = CalculateMaxManaOutput();
         UpdateDisplay();
-        
+        playerRef.playerScreenRef.UpdateManaBar();
         UpdateTotalLifeEnergy(lifeEnergy);
     }
     public void OnInputFieldChanged()

@@ -7,9 +7,12 @@ using UnityEngine;
 public class NailgunScript : BaseWeaponScript
 {
     public GameObject projectilePool;
+    public GameObject cursedNailPrefab;
     public Transform projectileOrigin;
     public HashSet<GameObject> projectiles = new();
     bool cooldownOn;
+    public float cursedNailDamage;
+    public float cursedNailProjectileSpeed;
     public override void Attack()
     {
         if(cooldownOn)
@@ -25,7 +28,13 @@ public class NailgunScript : BaseWeaponScript
             cooldownOn = false;
         }
     }
-
+    public void ShootCursedNail()
+    {
+        GameObject cursedNail = GameObject.Instantiate(cursedNailPrefab, projectileOrigin.position, playerRef.directionOrigin.rotation);
+        cursedNail.SetActive(true);
+        cursedNail.GetComponent<CursedNailScript>().parentScript = this;
+        cursedNail.GetComponent<CursedNailScript>().OnProjectileSpawn() ;
+    }
     public void ShootProjectile()
     {
         GameObject currentProjectile = projectiles.FirstOrDefault();

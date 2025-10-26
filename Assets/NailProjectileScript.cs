@@ -11,6 +11,7 @@ public class NailProjectileScript : MonoBehaviour
     public void OnProjectileSpawn()
     {
         rb = GetComponent<Rigidbody2D>();
+        transform.rotation = parentScript.playerRef.directionOrigin.rotation;
         rb.velocity = parentScript.projectileOrigin.transform.right * 10;
     }
     private void OnTriggerEnter2D(Collider2D collision)

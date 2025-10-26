@@ -21,7 +21,7 @@ public class PlayerStats
     public float moveSpeed = 3f;
 
     public float powerIncrement = 0.1f;
-    public float defenseIncrement = 0.2f;
+    public float defenseIncrement = 0.15f;
     public float moveSpeedIncrement = 0.1f;
     public float maxHealthIncrement = 10f;
     public float atkSpeedIncrement = 0.05f;
@@ -47,6 +47,7 @@ public class PlayerStats
                 moveSpeed += moveSpeedIncrement * incrementLevel;
                 break;
         }
+        
         
     }
 

@@ -18,6 +18,7 @@ public class BaseAIBehaviour : MonoBehaviour
     public float health;
     public float maxHealth;
     public EnemyHealthDisplay healthDisplay;
+    public Transform target;
 
     void Start()
     {
@@ -62,6 +63,18 @@ public class BaseAIBehaviour : MonoBehaviour
         if(health < 1)
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void Stunned(bool status)
+    {
+        if(status)
+        {
+            aiStateMachine.SetState(AIStateMachine.AIStates.Stunned);
+        }
+        else
+        {
+            aiStateMachine.SetState(AIStateMachine.AIStates.Idle);
         }
     }
 

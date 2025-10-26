@@ -23,8 +23,15 @@ public class AbilitiesHandler : MonoBehaviour
         availableAbilityScripts = new List<BaseAbilityScript>() {
             new HealAbilityScript("Heal", this),
             new MegaHealAbilityScript("MegaHeal", this),
-            new DashScript("Dash",this)
-            
+            new DashScript("Dash",this),
+            new PumpkinWardScript("PumpkinWard",this),
+            new DeathAuraScript("DeathAura", this),
+            new ManaRestoreScript("ManaRestore", this),
+            new SoulCleaveScript("SoulCleave", this),
+            new BloodshotModeScript("BloodshotMode", this),
+            new CursedNailAbilityScript("CursedNail", this),
+            new FrenzyScript("Frenzy",this),
+            new SawTrapAbilityScript("SawTrap", this)
         
         };
     }

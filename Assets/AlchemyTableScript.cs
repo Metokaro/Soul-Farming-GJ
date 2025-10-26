@@ -85,6 +85,10 @@ public class AlchemyTableScript : MachineScript
         {
             playerRef.playerStats.IncreaseStats(stat, 1);
         }
+        playerRef.maxHealth = playerRef.playerStats.maxHealth;
+        playerRef.playerScreenRef.UpdateHealthBar();
+        playerRef.equipSystem.currentWeaponObj.GetComponent<BaseWeaponScript>().OnEquip();
+        playerRef.moveSpeed = playerRef.playerStats.moveSpeed;
         if(lifeEnergy >= totalLifeEnergyCost)
         {
              lifeEnergy -= totalLifeEnergyCost;

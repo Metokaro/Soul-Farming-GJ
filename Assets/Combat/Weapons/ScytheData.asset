@@ -19,6 +19,7 @@ MonoBehaviour:
   weaponPrefab: {fileID: 9110893131778609960, guid: 483e86a88d228e342a237d24b164f298, type: 3}
   WeaponType: 1
   unlockedAbilities:
-  - {fileID: 11400000, guid: b476fa7a2f6dc48439fd057d2a252dac, type: 2}
+  - {fileID: 11400000, guid: ed8788256a438394587d6bc03ae66b46, type: 2}
   - {fileID: 11400000, guid: 7ddd62d648545e84eaf8bfd2c61c0ee3, type: 2}
   - {fileID: 11400000, guid: 877eb0bc623b1f04a9934bec0e166609, type: 2}
+  - {fileID: 11400000, guid: 9edebf0399bdf59488adc657e98cb506, type: 2}

@@ -1,31 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BloodyChainsawScript : BaseWeaponScript
 {
     Animator animator;
+    public bool bloodshotModeOn;
+    bool bloodshotCooldownOn;
+    public GameObject bloodShotProjectilePrefab;
+    public GameObject bloodShotProjectileOrigin;
+    public float projectileSpeed = 6f;
     public override void Attack()
+    {
+        
+        if(bloodshotModeOn)
+        {
+            BloodshotAttack();
+        }
+        else
+        {
+            NormalAttack();
+        }
+    }
+    public void BloodshotAttack()
+    {
+        if(bloodshotCooldownOn)
+        {
+            return;
+        }
+        StartCoroutine(Cooldown());
+
+        GameObject bloodshotProjectile = Instantiate(bloodShotProjectilePrefab, bloodShotProjectileOrigin.transform.position,playerRef.directionOrigin.rotation);
+        bloodshotProjectile.SetActive(true);
+        bloodshotProjectile.GetComponent<BloodshotProjectileScript>().weaponScript = this;
+        IEnumerator Cooldown()
+        {
+            bloodshotCooldownOn = true;
+            yield return new WaitForSeconds(calculatedWeaponSpeed);
+            bloodshotCooldownOn = false;
+        }
+    }
+    public void NormalAttack()
     {
         if (hitboxObj == null)
         {
             return;
         }
-        HitboxSpawnScript hitboxScript = hitboxObj.GetComponent<HitboxSpawnScript>();
+       HitboxSpawnScript hitboxScript = hitboxObj.GetComponent<HitboxSpawnScript>();
         if (hitboxScript.continousHitboxActive)
         {
             return;
         }
-        StartCoroutine(Cooldown());
-        foreach(var obj in hitboxScript.hitboxesInCollider)
+        foreach (var obj in hitboxScript.hitboxesInCollider)
         {
-            if(obj != null)
+            if (obj != null)
             {
                 obj.transform.parent.GetComponent<BaseAIBehaviour>().TakeDamage(calculatedDamage);
             }
-           
+
         }
-       IEnumerator Cooldown()
+        StartCoroutine(Cooldown());
+
+        IEnumerator Cooldown()
         {
             hitboxScript.continousHitboxActive = true;
             yield return new WaitForSeconds(calculatedWeaponSpeed);
@@ -37,6 +74,7 @@ public class BloodyChainsawScript : BaseWeaponScript
     void Start()
     {
         animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame

@@ -37,7 +37,8 @@ public class HealAbilityScript : BaseAbilityScript
     {
         for(int i = 0; i < duration; i++)
         {
-            Debug.Log("Heal");
+            playerRef.health += Mathf.Clamp(healAmountPerTick, 0, playerRef.maxHealth - playerRef.health); ;
+            playerRef.playerScreenRef.UpdateHealthBar();
             yield return new WaitForSeconds(1);
         }
         particleEffects.SetActive(false);

@@ -14,4 +14,5 @@ public class AbilityDataTemplate : ScriptableObject
     }
     public AbilityTypes abilityType;
     public float cooldown;
+    public float manaCost;
 }

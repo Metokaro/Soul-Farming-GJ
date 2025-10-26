@@ -21,3 +21,4 @@ MonoBehaviour:
   unlockedAbilities:
   - {fileID: 11400000, guid: b476fa7a2f6dc48439fd057d2a252dac, type: 2}
   - {fileID: 11400000, guid: 7ddd62d648545e84eaf8bfd2c61c0ee3, type: 2}
+  - {fileID: 11400000, guid: c3debe27028d41e41b5c84f8aa0a254b, type: 2}

@@ -6,7 +6,7 @@ public class ScytheScript : BaseWeaponScript
 {
    public bool rotateParent;
 
-    bool attackCooldownActive;
+   public bool attackCooldownActive;
     public float yChange;
    
     public override void Attack()

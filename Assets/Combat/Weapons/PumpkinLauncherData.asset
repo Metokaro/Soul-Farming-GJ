@@ -20,3 +20,4 @@ MonoBehaviour:
   WeaponType: 2
   unlockedAbilities:
   - {fileID: 11400000, guid: 877eb0bc623b1f04a9934bec0e166609, type: 2}
+  - {fileID: 11400000, guid: d9671551d3b4bd84683c2f628afaf06d, type: 2}

@@ -32,6 +32,8 @@ public class MegaHealAbilityScript : BaseAbilityScript
     IEnumerator ActivateFX()
     {
         megaHealFX.SetActive(true);
+        playerRef.health += Mathf.Clamp(healAmount, 0, playerRef.maxHealth - playerRef.health);
+        playerRef.playerScreenRef.UpdateHealthBar();
         yield return new WaitForSeconds(0.683f);
         megaHealFX.SetActive(false);
     }

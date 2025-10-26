@@ -79,7 +79,6 @@ public class AbilityHotbarDisplay : MonoBehaviour
         for (int a = 0; a < abilities.Count; a++)
         {
             AbilitySlotData emptySlot = abilitySlotDataList.FirstOrDefault((x) => x.slotOccupied == false);
-            Debug.Log(emptySlot);
             if (emptySlot == null)
             {
                 break;

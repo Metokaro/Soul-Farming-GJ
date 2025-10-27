@@ -61,6 +61,11 @@ public class AbilitiesHandler : MonoBehaviour
         abilities.Add(ability);
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, 3);
+        Gizmos.color = Color.red;
+    }
     public void InitializeUnlockedAbilities(List<AbilityDataTemplate> unlockedAbilities)
     {
         abilities.Clear();

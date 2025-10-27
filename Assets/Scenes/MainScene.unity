@@ -10819,6 +10819,10 @@ PrefabInstance:
       propertyPath: abilityHotbarRef
       value: 
       objectReference: {fileID: 160732685}
+    - target: {fileID: 6660940557365094030, guid: e2ad25f784cb6174f9625b94270a9ba7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7589212432325549974, guid: e2ad25f784cb6174f9625b94270a9ba7, type: 3}
       propertyPath: m_Name
       value: PumpkinWardParent1

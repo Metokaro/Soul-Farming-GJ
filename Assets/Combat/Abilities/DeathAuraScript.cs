@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class DeathAuraScript : BaseAbilityScript
@@ -8,7 +9,8 @@ public class DeathAuraScript : BaseAbilityScript
     public float AOE_radius = 3f;
     public float AOE_damage = 50f;
     public GameObject deathAuraEffect;
-    
+    public GameObject deathAuraExplosion;
+
     public DeathAuraScript(string _abilityName, AbilitiesHandler _abilitiesHandler) : base(_abilityName, _abilitiesHandler)
     {
 
@@ -20,7 +22,7 @@ public class DeathAuraScript : BaseAbilityScript
         {
             return;
         }
-        deathAuraEffect = abilityHandler.abilityObjects.FirstOrDefault((x) => x.name == "DeathAuraEffect");
+        
         abilityHandler.StartCoroutine(Cooldown());
         abilityHandler.StartCoroutine(DeathAuraEffect());
         CreateAOEAttack();
@@ -33,12 +35,11 @@ public class DeathAuraScript : BaseAbilityScript
         }
         IEnumerator DeathAuraEffect()
         {
-            deathAuraEffect.SetActive(true);
+            deathAuraEffect.SetActive(true); deathAuraExplosion.SetActive(true);
             yield return new WaitForSeconds(0.43f);
-            deathAuraEffect.SetActive(false);
+            deathAuraEffect.SetActive(false); deathAuraExplosion.SetActive(false);
         }
     }
-
     public void CreateAOEAttack()
     {
         List<RaycastHit2D> hits = Physics2D.CircleCastAll(playerRef.transform.position, AOE_radius, Vector2.zero,1, playerRef.targetableLayerMask).ToList();
@@ -48,5 +49,8 @@ public class DeathAuraScript : BaseAbilityScript
     public override void UpdateAbilitySettings()
     {
         cooldown = abilityData.cooldown;
+        deathAuraEffect = abilityHandler.abilityObjects.FirstOrDefault((x) => x.name == "DeathAuraEffect");
+        deathAuraExplosion = abilityHandler.abilityObjects.FirstOrDefault((x) => x.name == "DeathAuraExplosionEffect");
+        
     }
 }

@@ -59,3 +59,5 @@ MonoBehaviour:
     machinePrefab: {fileID: 9144822658935704449, guid: 967d11f1eab3799489e9a105bb060045, type: 3}
   - location: {x: -8.9, y: 5.3, z: 0}
     machinePrefab: {fileID: 2648705109750196960, guid: 979820d74d2bddf4d9b63920222f2c7f, type: 3}
+  - location: {x: -4.78, y: 7.59, z: 0}
+    machinePrefab: {fileID: 8578376098949245726, guid: f5db4cf715bd98b48864ee18a29f57c7, type: 3}

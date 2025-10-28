@@ -17,4 +17,4 @@ MonoBehaviour:
   abilityIcon: {fileID: 21300000, guid: 7c347f4ad0b60934d9e4bbdae6b7b619, type: 3}
   abilityType: 0
   cooldown: 5
-  manaCost: 0
+  manaCost: 35

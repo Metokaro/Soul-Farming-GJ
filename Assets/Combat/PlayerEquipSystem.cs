@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerEquipSystem
@@ -26,6 +27,6 @@ public class PlayerEquipSystem
         weaponScript.weaponData = newWeaponData;
         weaponScript.playerRef = playerControllerRef;
         weaponScript.OnEquip();
-        playerControllerRef.abilitiesHandler.InitializeUnlockedAbilities(weaponScript.weaponData.unlockedAbilities);
+        playerControllerRef.abilitiesHandler.InitializeUnlockedAbilities(weaponScript.UnlockAbilities().ToList());
     }
 }

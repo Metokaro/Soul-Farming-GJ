@@ -16,7 +16,12 @@ public class WeaponDataTemplate : ScriptableObject
         Ranged = 2,
     }
     public WeaponTypes WeaponType;
-    public List<AbilityDataTemplate> unlockedAbilities;
-
+    public List<AbilityUnlock> unlockedAbilities;
+    [System.Serializable]
+    public class AbilityUnlock
+    {
+       public AbilityDataTemplate ability;
+        public float levelReq;
+    }
     
 }

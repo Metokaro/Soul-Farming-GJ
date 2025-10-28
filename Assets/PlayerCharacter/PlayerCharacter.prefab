@@ -16163,7 +16163,7 @@ MonoBehaviour:
   targetableLayerMask:
     serializedVersion: 2
     m_Bits: 65536
-  souls: 50
+  souls: 100
   mana: 32
   maxMana: 200
   health: 0

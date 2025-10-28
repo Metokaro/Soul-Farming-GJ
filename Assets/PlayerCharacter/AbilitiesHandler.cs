@@ -66,10 +66,10 @@ public class AbilitiesHandler : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, 3);
         Gizmos.color = Color.red;
     }
-    public void InitializeUnlockedAbilities(List<AbilityDataTemplate> unlockedAbilities)
+    public void InitializeUnlockedAbilities(List<AbilityDataTemplate> inputList)
     {
         abilities.Clear();
-        unlockedAbilities.ForEach((data) => { BindAbility(abilities.Count + 1, AbilityKeybinds[abilities.Count], data); });
+        inputList.ForEach((data) => { BindAbility(abilities.Count + 1, AbilityKeybinds[abilities.Count], data); });
         abilityHotbarRef.SetAbilitySlotData();
         abilityHotbarRef.ReorganizeSlots(abilities.ToList());
     }

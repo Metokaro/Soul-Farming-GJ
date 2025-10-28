@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class BaseWeaponScript : MonoBehaviour
@@ -10,6 +11,8 @@ public abstract class BaseWeaponScript : MonoBehaviour
     [HideInInspector] public WeaponDataTemplate weaponData;
     [HideInInspector] public Animator weaponAnimator;
     [HideInInspector] public GameObject hitboxObj;
+    [HideInInspector] public int weaponLevel;
+    //public HashSet<AbilityDataTemplate> unlockedAbilities = new();
     public Sprite hitboxSprite;
     public bool debugHitbox;
     public abstract void Attack();
@@ -19,6 +22,13 @@ public abstract class BaseWeaponScript : MonoBehaviour
         calculatedDamage = weaponData.DefaultDamage * playerRef.playerStats.powerMultiplier;
         calculatedWeaponSpeed = weaponData.DefaultWeaponSpeed * playerRef.playerStats.atkSpeedMultiplier;
       weaponAnimator=  GetComponent<Animator>();
+    }
+    public HashSet<AbilityDataTemplate> UnlockAbilities()
+    {
+        Debug.Log(weaponLevel);
+        HashSet<AbilityDataTemplate> unlockedAbilities = new();
+        unlockedAbilities.UnionWith(weaponData.unlockedAbilities.Where((x) => x.levelReq <= weaponLevel).Select((x) => x.ability));
+        return unlockedAbilities;
     }
     public virtual void SpawnHitbox(Vector3 hitboxSize, Vector3 hitboxPosition, HitboxSpawnScript.HitboxType hitboxType)
     {
@@ -47,6 +57,10 @@ public abstract class BaseWeaponScript : MonoBehaviour
         playerRef.directionOrigin.transform.eulerAngles = new(0, 0, angle);
         float rotateDiff = (playerRef.spriteRenderer.flipX) ? -1 : 1;
         playerRef.equipSystem.weaponParent.transform.localScale = new(1, rotateDiff, 1);
+    }
+    private void Awake()
+    {
+        weaponLevel = 1;
     }
     public virtual void OnUnequip(){
         

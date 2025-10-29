@@ -18,14 +18,30 @@ public class PumpkinProjectileScript : MonoBehaviour
         string hitColliderLayer = LayerMask.LayerToName(collision.transform.gameObject.layer);
         if (collisionLayers.Contains(hitColliderLayer))
         {
+            CreateAOE();
             ReturnToPool();
-            if(hitColliderLayer == "EnemyHitbox")
-            {
-                BaseAIBehaviour aiScript = collision.transform.parent.GetComponent<BaseAIBehaviour>();
-                aiScript.TakeDamage(parentScript.calculatedDamage);
-            }
         }
     }
+
+    IEnumerator CreateEffect()
+    {
+        GameObject effectInstance = Instantiate(parentScript.explosionEffect, transform.position, Quaternion.identity);
+        effectInstance.SetActive(true);
+        yield return new WaitForSeconds(effectInstance.GetComponent<ParticleSystem>().main.startLifetimeMultiplier);
+        Destroy(effectInstance);
+    }
+
+    public void CreateAOE()
+    {
+        List<RaycastHit2D> hits = Physics2D.CircleCastAll(transform.position, parentScript.aoeSize, Vector2.zero, 0, parentScript.explosionLayerMask).ToList();
+        foreach(var hit in hits)
+        {
+            BaseAIBehaviour aiScript = hit.collider.transform.parent.GetComponent<BaseAIBehaviour>();
+            aiScript.TakeDamage(parentScript.calculatedDamage);
+        }
+       parentScript.StartCoroutine(CreateEffect());
+    }
+
     void ReturnToPool()
     {
         parentScript.projectiles.Add(this.gameObject);

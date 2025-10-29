@@ -10,17 +10,18 @@ public class BaseAIBehaviour : MonoBehaviour
     [HideInInspector] public AIDestinationSetter destinationSetter;
     [HideInInspector] public Vector3 spawnPosition;
     GameObject currentEndPoint;
+    public float attackRange;
     public AIStateMachine aiStateMachine;
     public LayerMask potentialTargetsLayerMask;
     public float detectionRadius;
     public float pursueDistance;
 
-    public float health;
+    [HideInInspector] public float health;
     public float maxHealth;
     public EnemyHealthDisplay healthDisplay;
-    public Transform target;
+    [HideInInspector] public Transform target;
 
-    void Start()
+   public virtual void Start()
     {
         aiPathfinder = GetComponent<AIPath>();
         destinationSetter = GetComponent<AIDestinationSetter>();
@@ -29,13 +30,20 @@ public class BaseAIBehaviour : MonoBehaviour
         aiStateMachine.SetState(AIStateMachine.AIStates.Idle);
          health =  maxHealth;
     }
+    public virtual  void Attack() { }
+
     public void DetectTargetsInRange()
     {
         List<RaycastHit2D> hits = Physics2D.CircleCastAll(transform.position, detectionRadius, Vector2.zero, 0, potentialTargetsLayerMask).ToList();
         if (hits.Count > 0)
         {
             hits.FirstOrDefault((x) => destinationSetter.target = x.collider.gameObject.transform.parent);
+            target = hits.FirstOrDefault().transform;
             aiStateMachine.SetState(AIStateMachine.AIStates.Pursuing);
+        }
+        else
+        {
+            target = null;
         }
     }
     public void SetEndPoint(Vector3 position, AIStateMachine.AIStates nextState)
@@ -87,11 +95,11 @@ public class BaseAIBehaviour : MonoBehaviour
     {
         aiStateMachine.UpdateState(true, true);
     }
-    public void OnDrawGizmos()
-    {
-        if(aiStateMachine.currentAIState == AIStateMachine.AIStates.Idle /*|| aiStateMachine.currentAIState == AIStateMachine.AIStates.Retreating*/)
-        {
-            Gizmos.DrawWireSphere(transform.position, detectionRadius);
-        }
-    }
+    //public void OnDrawGizmos()
+    //{
+    //    if(aiStateMachine.currentAIState == AIStateMachine.AIStates.Idle /*|| aiStateMachine.currentAIState == AIStateMachine.AIStates.Retreating*/)
+    //    {
+    //        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    //    }
+    //}
 }

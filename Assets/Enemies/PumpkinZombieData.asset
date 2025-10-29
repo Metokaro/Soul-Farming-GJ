@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5e0dbfbb4362044498f33e73e10ce6c, type: 3}
-  m_Name: TestEnemy3
+  m_Name: PumpkinZombieData
   m_EditorClassIdentifier: 
-  enemyName: test3
-  enemyObjPrefab: {fileID: 2994916534443923923, guid: 7f658aa20257aca498e1ae3627aed8ad, type: 3}
-  enemyLevel: 1
+  enemyName: test4
+  enemyObjPrefab: {fileID: 3027236406909066289, guid: bb5e40c1626c2194da9806a129bc3750, type: 3}
+  enemyLevel: 0

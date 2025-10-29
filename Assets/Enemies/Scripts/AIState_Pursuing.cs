@@ -21,10 +21,18 @@ public class AIState_Pursuing : BaseAIState, IUpdate
     public void OnUpdate(BaseAIBehaviour aiScript)
     {
         float distanceFromTarget = Vector2.Distance(aiScript.transform.position, aiScript.destinationSetter.target.position);
+        if(aiScript.attackRange >= distanceFromTarget)
+        {
+            aiScript.Attack();
+        }
         if(aiScript.pursueDistance < distanceFromTarget)
         {
             aiScript.destinationSetter.target = null;
             aiScript.aiStateMachine.SetState(AIStateMachine.AIStates.Retreating);
+        }
+        if (aiScript is IMoveAnimation)
+        {
+            (aiScript as IMoveAnimation).Move(true, aiScript);
         }
     }
 }

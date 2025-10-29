@@ -25,7 +25,6 @@ public abstract class BaseWeaponScript : MonoBehaviour
     }
     public HashSet<AbilityDataTemplate> UnlockAbilities()
     {
-        Debug.Log(weaponLevel);
         HashSet<AbilityDataTemplate> unlockedAbilities = new();
         unlockedAbilities.UnionWith(weaponData.unlockedAbilities.Where((x) => x.levelReq <= weaponLevel).Select((x) => x.ability));
         return unlockedAbilities;

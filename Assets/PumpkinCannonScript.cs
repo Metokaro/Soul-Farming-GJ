@@ -9,6 +9,9 @@ public class PumpkinCannonScript : BaseWeaponScript
     public Transform projectileOrigin;
     public HashSet<GameObject> projectiles = new();
     bool cooldownOn;
+    public GameObject explosionEffect;
+    public float aoeSize;
+    public LayerMask explosionLayerMask;
     public override void Attack()
     {
         if (cooldownOn)

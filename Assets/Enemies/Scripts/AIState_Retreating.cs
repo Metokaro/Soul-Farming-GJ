@@ -21,5 +21,9 @@ public class AIState_Retreating : BaseAIState, IUpdate
     public void OnUpdate(BaseAIBehaviour aiScript)
     {
         aiScript.DetectTargetsInRange();
+        if (aiScript is IMoveAnimation)
+        {
+            (aiScript as IMoveAnimation).Move(true, aiScript);
+        }
     }
 }

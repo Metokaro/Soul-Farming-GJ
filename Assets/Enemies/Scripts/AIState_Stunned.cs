@@ -11,6 +11,10 @@ public class AIState_Stunned : BaseAIState
     public override void EnterState(BaseAIBehaviour aiScript, AIStateMachine.AIStates previousState)
     {
         aiScript.destinationSetter.target = aiScript.transform;
+        if (aiScript is IMoveAnimation)
+        {
+            (aiScript as IMoveAnimation).Move(false, aiScript);
+        }
     }
     
 }

@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         equipSystem = new(this, directionOrigin.Find("WeaponParent"));
-        equipSystem.EquipNewWeapon(obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Scythe"));
+        equipSystem.EquipNewWeapon(obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Pumpkin Launcher"));
         abilitiesHandler = GetComponent<AbilitiesHandler>();
         canTakeDamage = true;
         health = maxHealth;

@@ -12,6 +12,8 @@ public class AbilityDataTemplate : ScriptableObject
     {
         Passive, Active
     }
+    [TextArea(5, 10)]
+    public string abilityDescription;
     public AbilityTypes abilityType;
     public float cooldown;
     public float manaCost;

@@ -16,4 +16,5 @@ public class EnemyRoomTemplate : RoomDataTemplate
     public int basicEnemiesCount_min, basicEnemiesCount_max;
     public int intermediateEnemiesCount_min, intermediateEnemiesCount_max;
     public int advancedEnemiesCount_min, advancedEnemiesCount_max;
+    public List<EnemyData> enemies;
 }

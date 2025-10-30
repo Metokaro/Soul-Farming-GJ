@@ -31,7 +31,7 @@ public class EngineeringWorkbenchScript : MachineScript
         }
 
 
-       
+        nextAbility = GetNextAbility();
         UpdateDisplay();
     }
 

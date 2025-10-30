@@ -15,6 +15,7 @@ MonoBehaviour:
   abilityName: DeathAura
   abilityDisplayName: Death Aura
   abilityIcon: {fileID: 282699633, guid: 7107ff8de21e95247b753ebf3e4a2410, type: 3}
+  abilityDescription: Releases a large explosion around you
   abilityType: 1
   cooldown: 20
   manaCost: 60

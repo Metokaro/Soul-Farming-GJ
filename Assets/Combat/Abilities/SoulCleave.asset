@@ -15,6 +15,7 @@ MonoBehaviour:
   abilityName: SoulCleave
   abilityDisplayName: Soul Cleave
   abilityIcon: {fileID: 21300000, guid: 27ef21a86efe509459cbbd1fd4fecb4e, type: 3}
+  abilityDescription: Shoots a large projectile
   abilityType: 1
   cooldown: 5
   manaCost: 20

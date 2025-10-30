@@ -15,6 +15,7 @@ MonoBehaviour:
   abilityName: SawTrap
   abilityDisplayName: Saw Trap
   abilityIcon: {fileID: -1293314876, guid: 7107ff8de21e95247b753ebf3e4a2410, type: 3}
+  abilityDescription: Places a saw trap that stuns enemies for a short duration
   abilityType: 1
   cooldown: 9
   manaCost: 20

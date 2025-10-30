@@ -15,7 +15,7 @@ public class AIState_Pursuing : BaseAIState, IUpdate
 
     public override void EnterState(BaseAIBehaviour aiScript, AIStateMachine.AIStates previousState)
     {
-        
+        aiScript.onPursueFunctions?.Invoke();
     }
 
     public void OnUpdate(BaseAIBehaviour aiScript)

@@ -54,3 +54,5 @@ MonoBehaviour:
   intermediateEnemiesCount_max: 5
   advancedEnemiesCount_min: 0
   advancedEnemiesCount_max: 0
+  enemies:
+  - {fileID: 11400000, guid: 412cbc13c55e7e14c8a08d9ee693b71b, type: 2}

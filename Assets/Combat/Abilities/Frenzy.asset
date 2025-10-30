@@ -15,6 +15,7 @@ MonoBehaviour:
   abilityName: Frenzy
   abilityDisplayName: Frenzy
   abilityIcon: {fileID: -958231633, guid: ab382d9cbe55e9948902f7f9bb4bfcf0, type: 3}
+  abilityDescription: Increases attack speed temporarily
   abilityType: 0
   cooldown: 10
   manaCost: 35

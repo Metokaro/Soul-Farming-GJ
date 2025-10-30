@@ -341,17 +341,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiPathfinder: {fileID: 0}
   destinationSetter: {fileID: 0}
+  enemyData: {fileID: 0}
   spawnPosition: {x: 0, y: 0, z: 0}
   attackRange: 0.5
   potentialTargetsLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  detectionRadius: 3
-  pursueDistance: 4
+  detectionRadius: 4
+  pursueDistance: 6
   health: 0
   maxHealth: 100
   healthDisplay: {fileID: 1645829270693684978}
   target: {fileID: 0}
+  initiallyFacingLeft: 0
+  damagePopupPrefab: {fileID: 1703322097101312785, guid: cd0a7dd43d28bcd43ad318366c186ae3, type: 3}
+  spriteRenderer: {fileID: 0}
   damage: 13
   attackSpeed: 0.8
   postAttackDelay: 0.3
@@ -482,7 +486,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0

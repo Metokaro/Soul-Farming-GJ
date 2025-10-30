@@ -11,10 +11,20 @@ public class PlayerScreenScript : MonoBehaviour
     public TextMeshProUGUI healthDisplay;
     public Slider healthBar, manaBar;
     public PlayerController playerRef;
+
+    public TextMeshProUGUI soulsDisplay;
+    public TextMeshProUGUI lifeEnergyDisplay;
     // Start is called before the first frame update
     void Awake()
     {
        playerRef.playerScreenRef = this;
+    }
+
+    public void UpdateCurrencies(float souls, float lifeEnergy, bool showLifeEnergy)
+    {
+        lifeEnergyDisplay.gameObject.SetActive(showLifeEnergy);
+        lifeEnergyDisplay.text = "Life Energy: " + lifeEnergy;
+        soulsDisplay.text = "Souls: " + souls;
     }
 
     public void UpdateHealthBar()

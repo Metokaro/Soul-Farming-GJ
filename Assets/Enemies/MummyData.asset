@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e0dbfbb4362044498f33e73e10ce6c, type: 3}
   m_Name: MummyData
   m_EditorClassIdentifier: 
-  enemyName: test2
+  enemyName: Mummy
   enemyObjPrefab: {fileID: 581120725699271483, guid: 37ede0fe2afb66c4996c905e33e9551b, type: 3}
+  soulDrop: 1
   enemyLevel: 0

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e0dbfbb4362044498f33e73e10ce6c, type: 3}
   m_Name: ShadowMonster
   m_EditorClassIdentifier: 
-  enemyName: test3
+  enemyName: Shadow Monster
   enemyObjPrefab: {fileID: 2994916534443923923, guid: 7f658aa20257aca498e1ae3627aed8ad, type: 3}
-  enemyLevel: 0
+  soulDrop: 2
+  enemyLevel: 1

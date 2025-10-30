@@ -25,5 +25,6 @@ public class MachineScript : InteractableObject
     public void UpdateTotalLifeEnergy(float lifeEnergyInput)
     {
         (roomGenerator.currentRoom_Data as RoomGenerator.MachineRoomData).machinesInRoom.ToList().ForEach(r => { r.GetComponent<MachineScript>().lifeEnergy = lifeEnergyInput; });
+        playerRef.playerScreenRef.UpdateCurrencies(playerRef.souls, lifeEnergyInput, true);
     }
 }

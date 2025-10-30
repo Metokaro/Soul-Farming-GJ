@@ -11,7 +11,14 @@ public class EnemyHealthDisplay : MonoBehaviour
     {
         healthBar.value = health/maxHealth;
     }
+    public void Start()
+    {
+        //GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
+        //GetComponent<Canvas>().worldCamera = Camera.main;
+        //GetComponent<Canvas>().planeDistance = 0;
+        //GetComponent<Canvas>().sortingOrder = 4;
 
+    }
     public void Update()
     {
         healthBar.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + positionOffset);

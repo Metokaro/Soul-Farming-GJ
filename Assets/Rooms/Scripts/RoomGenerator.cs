@@ -158,23 +158,31 @@ public class RoomGenerator : MonoBehaviour
             
         }
     }
-    public void OnExitRoom()
+    public void OnExitRoom(out int enemiesCount)
     {
-        clearedRoomsCount++;
-        if(currentRoom is EnemyRoomTemplate) {
+        
+        
+        if(currentRoom is EnemyRoomTemplate)
+        {
+            if((currentRoom_Data as EnemyRoomData).enemiesInRoom.Count > 0)
+            {
+                enemiesCount = (currentRoom_Data as EnemyRoomData).enemiesInRoom.Count;
+                return;
+            }
             roomPickerRef.IncreaseRoomsClearedCount(currentRoom as EnemyRoomTemplate);
-            enemySpawnHandler.ClearEnemies();
         }
         else
         {
             DestroyMachines();
         }
+        clearedRoomsCount++;
         roomPickerRef.currentRoomType = (roomPickerRef.currentRoomType == RoomPicker.RoomType.Enemy) ? RoomPicker.RoomType.Machine : RoomPicker.RoomType.Enemy;
         Destroy(exitObjInstance);
         Destroy(entranceObjInstance);
         originalTilemaps.ForEach((x) => x.ClearAllTiles());
         tilemapInfoList.Clear();
         roomPickerRef.PickCurrentRoom();
+        enemiesCount = 0;
     }
     
     public void DestroyMachines()
@@ -213,8 +221,9 @@ public class RoomGenerator : MonoBehaviour
         GetTileMapTemplateInfo();
         SetTilemapInfo(new());
         CreateEntranceAndExit(new());
-        OnEnterRoom();
         StartCoroutine(LoadPathfinder());
+        OnEnterRoom();
+        
     }
 
     IEnumerator LoadPathfinder()

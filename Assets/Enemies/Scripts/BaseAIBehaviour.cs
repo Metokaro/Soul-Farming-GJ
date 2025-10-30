@@ -2,12 +2,14 @@ using Pathfinding;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class BaseAIBehaviour : MonoBehaviour
 {
     [HideInInspector]public AIPath aiPathfinder;
     [HideInInspector] public AIDestinationSetter destinationSetter;
+    [HideInInspector] public EnemyData enemyData;
     [HideInInspector] public Vector3 spawnPosition;
     GameObject currentEndPoint;
     public float attackRange;
@@ -20,8 +22,14 @@ public class BaseAIBehaviour : MonoBehaviour
     public float maxHealth;
     public EnemyHealthDisplay healthDisplay;
     [HideInInspector] public Transform target;
-
-   public virtual void Start()
+    [HideInInspector] public bool initiallyFacingLeft;
+    public GameObject damagePopupPrefab;
+    public delegate void OnPursue();
+    public OnPursue onPursueFunctions;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
+    Color defaultColor;
+    Coroutine damageIndicator_co;
+    public virtual void Start()
     {
         aiPathfinder = GetComponent<AIPath>();
         destinationSetter = GetComponent<AIDestinationSetter>();
@@ -29,6 +37,9 @@ public class BaseAIBehaviour : MonoBehaviour
         spawnPosition = transform.position;
         aiStateMachine.SetState(AIStateMachine.AIStates.Idle);
          health =  maxHealth;
+        initiallyFacingLeft = true;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        defaultColor = spriteRenderer.color;
     }
     public virtual  void Attack() { }
 
@@ -64,14 +75,40 @@ public class BaseAIBehaviour : MonoBehaviour
         endPointScript.movingAgent = this.gameObject;
         endPointScript.stateAfterReachingPoint = nextState;
     }
-    public void TakeDamage(float takenDamage)
+    public void TakeDamage(float damageTaken)
     {
-        health -= takenDamage;
+        health -= damageTaken;
         healthDisplay.UpdateHealthBar(health, maxHealth);
+       damageIndicator_co= StartCoroutine(DamageIndicator());
+        StartCoroutine(DamagePopup(damageTaken));
         if(health < 1)
         {
+            (FindObjectOfType<RoomGenerator>().currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom.Remove(gameObject);
+            FindObjectOfType<RoomGenerator>().playerController.souls += enemyData.soulDrop;
+            FindObjectOfType<RoomGenerator>().playerController.playerScreenRef.UpdateCurrencies(FindObjectOfType<RoomGenerator>().playerController.souls, 0, false);
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator DamageIndicator()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = defaultColor;
+    }
+
+    IEnumerator DamagePopup(float damageTaken)
+    {
+        GameObject damagePopup1 = Instantiate(damagePopupPrefab, transform.position, Quaternion.identity);
+        
+        damagePopup1.SetActive(true);
+        Transform damagePopupText=  damagePopup1.transform.GetChild(0);
+        damagePopup1.transform.SetParent(transform);
+        damagePopupText.GetComponent<TextMeshPro>().text = damageTaken.ToString();
+        damagePopup1.transform.position = transform.position;
+        damagePopup1.transform.SetAsFirstSibling();
+        yield return new WaitForSeconds(0.45f);
+        Destroy(damagePopup1);
     }
 
     public void Stunned(bool status)

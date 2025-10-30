@@ -9,7 +9,11 @@ public class AbilityHotbarDisplay : MonoBehaviour
 {
     public List<GameObject> abilitySlotObjects;
     public HashSet<AbilitySlotData> abilitySlotDataList = new();
-    
+    public GameObject abilityInfoDisplay;
+    public TextMeshProUGUI abilityDescription;
+    public TextMeshProUGUI abilityName;
+    public TextMeshProUGUI manaCost;
+  
     public class AbilitySlotData
     {
         public int slotNumber;
@@ -18,7 +22,7 @@ public class AbilityHotbarDisplay : MonoBehaviour
         public Slider cooldownBar;
         public AbilitiesHandler.Ability ability;
         public bool slotOccupied = false;
-
+        public AbilitySlotScript slotScript;
         public void UpdateDisplay()
         {
             iconDisplay.gameObject.SetActive(true);
@@ -30,6 +34,7 @@ public class AbilityHotbarDisplay : MonoBehaviour
             keybindDisplay.text = slotNumber.ToString();
             iconDisplay.gameObject.SetActive(false);
             cooldownBar.gameObject.SetActive(false);
+            slotScript.ability = null;
         }
         public string ConvertKeyCodeToString(KeyCode input)
         {
@@ -45,6 +50,18 @@ public class AbilityHotbarDisplay : MonoBehaviour
         }
     }
 
+    public void UpdateAbilityInfoDisplay(bool visible, AbilityDataTemplate ability)
+    {
+        abilityInfoDisplay.SetActive(visible);
+        if(visible == false)
+        {
+            return;
+        }
+        abilityDescription.text = ability.abilityDescription;
+        manaCost.text = "Mana cost: " + ability.manaCost;
+        abilityName.text = "Ability: " + ability.abilityDisplayName;
+    }
+
     public void SetAbilitySlotData()
     {
         abilitySlotDataList.Clear();
@@ -57,6 +74,7 @@ public class AbilityHotbarDisplay : MonoBehaviour
                 slotData.keybindDisplay = slot.transform.Find("Keybind").GetComponent<TextMeshProUGUI>();
                 slotData.iconDisplay = slot.transform.Find("Icon").GetComponent<Image>();
                 slotData.cooldownBar = slot.transform.Find("CooldownBar").GetComponent<Slider>();
+                slotData.slotScript = slot.GetComponent<AbilitySlotScript>();
             }
             catch
             {
@@ -73,6 +91,7 @@ public class AbilityHotbarDisplay : MonoBehaviour
             AbilitySlotData slot = abilitySlotDataList.ToList()[i];
             slot.slotOccupied = false;
             slot.ability = null;
+            
             slot.HideDisplay();
         }
 
@@ -84,6 +103,7 @@ public class AbilityHotbarDisplay : MonoBehaviour
                 break;
             }
             emptySlot.ability = abilities[a];
+            emptySlot.slotScript.ability = emptySlot.ability.abilityData;
             emptySlot.UpdateDisplay();
             emptySlot.slotOccupied = true;
         }

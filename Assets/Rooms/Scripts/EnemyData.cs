@@ -7,6 +7,7 @@ public class EnemyData : ScriptableObject
 {
     public string enemyName;
     public GameObject enemyObjPrefab;
+    public int soulDrop;
     public enum EnemyLevels
     {
         Basic,

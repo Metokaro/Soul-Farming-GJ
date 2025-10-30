@@ -15,6 +15,7 @@ MonoBehaviour:
   abilityName: ManaRestore
   abilityDisplayName: Mana Restore
   abilityIcon: {fileID: 21300000, guid: 2d704323d2269c7418dd2899f9a70e08, type: 3}
+  abilityDescription: Restores mana over time
   abilityType: 0
   cooldown: 5
   manaCost: 0

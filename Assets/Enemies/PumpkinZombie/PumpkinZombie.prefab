@@ -572,17 +572,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiPathfinder: {fileID: 0}
   destinationSetter: {fileID: 0}
+  enemyData: {fileID: 0}
   spawnPosition: {x: 0, y: 0, z: 0}
   attackRange: 2.9
   potentialTargetsLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  detectionRadius: 3
-  pursueDistance: 4
+  detectionRadius: 6
+  pursueDistance: 8
   health: 0
   maxHealth: 100
   healthDisplay: {fileID: 6002051575433654048}
   target: {fileID: 0}
+  initiallyFacingLeft: 0
+  damagePopupPrefab: {fileID: 1703322097101312785, guid: cd0a7dd43d28bcd43ad318366c186ae3, type: 3}
   damage: 10
   attackSpeed: 1.6
   postAttackDelay: 0.15

@@ -22,6 +22,7 @@ public class PumpkinWardScript : BaseAbilityScript
             return;
         }
         totalHits = 0;
+        playerRef.onTakeDamageFunction = ProtectPlayer;
         totalHitsPerWard = hitsPerWard * 2;
         abilityHandler.StartCoroutine(Cooldown());
         abilityHandler.StartCoroutine(Duration());
@@ -29,7 +30,7 @@ public class PumpkinWardScript : BaseAbilityScript
         pumpkinWard2 = abilityHandler.abilityObjects.FirstOrDefault((x) => x.name == "PumpkinWardParent2");
         pumpkinWard1.SetActive(true);
         pumpkinWard2.SetActive(true);
-        playerRef.onTakeDamageFunction = ProtectPlayer;
+       
         IEnumerator Cooldown()
         {
             cooldownActive = true;
@@ -69,6 +70,7 @@ public class PumpkinWardScript : BaseAbilityScript
 
     public override void UpdateAbilitySettings()
     {
+       
         cooldown = abilityData.cooldown;
     }
 }

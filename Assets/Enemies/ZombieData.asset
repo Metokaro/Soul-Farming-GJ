@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e0dbfbb4362044498f33e73e10ce6c, type: 3}
   m_Name: ZombieData
   m_EditorClassIdentifier: 
-  enemyName: test2
+  enemyName: Zombie
   enemyObjPrefab: {fileID: 2529053130024548252, guid: a29bc34ad4c2c474091658f2d9c7c968, type: 3}
+  soulDrop: 1
   enemyLevel: 0

@@ -15,6 +15,7 @@ MonoBehaviour:
   abilityName: BloodshotMode
   abilityDisplayName: Bloodshot Mode
   abilityIcon: {fileID: -494405193, guid: 50871007cc794eb4a983f3aeb03cbb9c, type: 3}
+  abilityDescription: Temporariy allows basic attacks to shoot blood projectiles
   abilityType: 0
   cooldown: 10
   manaCost: 45

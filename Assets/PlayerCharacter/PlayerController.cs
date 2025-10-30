@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool canTakeDamage;
     [HideInInspector] public delegate void OnTakeDamageFunction();
     [HideInInspector] public OnTakeDamageFunction onTakeDamageFunction;
-
+    Color defaultColor;
     public void Move()
     {
         if(canMove == false)
@@ -93,9 +93,10 @@ public class PlayerController : MonoBehaviour
         health = maxHealth;
         
         mana = maxMana * 0.25f;
-        
+        playerScreenRef.UpdateCurrencies(souls, 0, false);
         playerScreenRef.UpdateManaBar();
-      
+        defaultColor =  spriteRenderer.color;
+
     }
     private void Awake()
     {
@@ -107,6 +108,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(float damageTaken)
     {
         onTakeDamageFunction?.Invoke();
+        StartCoroutine(DamageIndicator());
         if (canTakeDamage == false)
         { return; }
         damageTaken -= Mathf.RoundToInt(damageTaken * (playerStats.defenseMultiplier * 0.15f));
@@ -115,6 +117,14 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         playerScreenRef.UpdateHealthBar();
+    }
+
+    IEnumerator DamageIndicator()
+    {
+        spriteRenderer.color = Color.white;
+        spriteRenderer.color = canTakeDamage ? Color.red : new(1,1,1,0.4f);
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = defaultColor;
     }
 
     // Update is called once per frame

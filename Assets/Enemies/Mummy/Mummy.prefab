@@ -387,17 +387,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aiPathfinder: {fileID: 0}
   destinationSetter: {fileID: 0}
+  enemyData: {fileID: 0}
   spawnPosition: {x: 0, y: 0, z: 0}
   attackRange: 0.5
   potentialTargetsLayerMask:
     serializedVersion: 2
     m_Bits: 1024
-  detectionRadius: 3
-  pursueDistance: 4
+  detectionRadius: 5
+  pursueDistance: 7
   health: 0
   maxHealth: 100
   healthDisplay: {fileID: 4259985399349307216}
   target: {fileID: 0}
+  initiallyFacingLeft: 0
+  damagePopupPrefab: {fileID: 1703322097101312785, guid: cd0a7dd43d28bcd43ad318366c186ae3, type: 3}
+  spriteRenderer: {fileID: 0}
   damage: 24
   attackSpeed: 1.1
   postAttackDelay: 0.45
@@ -641,6 +645,7 @@ GameObject:
   - component: {fileID: 1706814867808209710}
   - component: {fileID: 6749050286779714585}
   - component: {fileID: 4259985399349307216}
+  - component: {fileID: 523985947241887888}
   m_Layer: 5
   m_Name: HealthUIDisplay
   m_TagString: Untagged
@@ -677,7 +682,7 @@ Canvas:
   m_GameObject: {fileID: 4594848103364989927}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -745,6 +750,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 4860639545639501077}
   positionOffset: {x: 0, y: 0.8, z: 0}
+--- !u!222 &523985947241887888
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594848103364989927}
+  m_CullTransparentMesh: 1
 --- !u!1 &4856300415142671781
 GameObject:
   m_ObjectHideFlags: 0

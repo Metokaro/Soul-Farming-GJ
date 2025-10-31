@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5001878519284864525}
   - component: {fileID: 7709042278418269827}
   m_Layer: 0
-  m_Name: TestEntrance
+  m_Name: EntranceFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

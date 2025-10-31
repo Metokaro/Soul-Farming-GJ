@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44db97dfcfa141b43ad4131f446ba5bd, type: 3}
+  m_Name: DungeonSafeRoom4
+  m_EditorClassIdentifier: 
+  entranceLocation: {x: -129.26, y: -83.76, z: 0}
+  exitLocation: {x: -132.89, y: -74.38, z: 0}
+  roomOrigin: {x: -136, y: -85, z: 0}
+  entranceObj: {fileID: 2768139659821071786, guid: a7a6996227bafa54ca7cecb332cf8bf5, type: 3}
+  exitObj: {fileID: 5758226439643942654, guid: 67da88381c8aafd40932176e2f364452, type: 3}
+  copyCoordinates:
+  - targetTilemap: 0
+    minX: -136
+    maxX: -122
+    minY: -85
+    maxY: -72
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
+  minStartingLifeEnergy: 75
+  maxStartingLifeEnergy: 200
+  machineCoordinates:
+  - location: {x: -125.44, y: -79.88, z: 0}
+    machinePrefab: {fileID: 7277031646299492264, guid: 0f0d43d27614d9045a418e2e015a5cff, type: 3}
+  - location: {x: -134.22, y: -78.75, z: 0}
+    machinePrefab: {fileID: 8891656989551385378, guid: e317428551512f84da98afeb5db5fc5d, type: 3}
+  - location: {x: -130.21, y: -77.14, z: 0}
+    machinePrefab: {fileID: 9144822658935704449, guid: 967d11f1eab3799489e9a105bb060045, type: 3}
+  - location: {x: -125.75, y: -77.21, z: 0}
+    machinePrefab: {fileID: 8578376098949245726, guid: f5db4cf715bd98b48864ee18a29f57c7, type: 3}

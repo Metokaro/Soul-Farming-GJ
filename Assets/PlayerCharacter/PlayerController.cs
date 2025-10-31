@@ -74,11 +74,7 @@ public class PlayerController : MonoBehaviour
         _angle = angle;
     }
 
-    public void DepleteMana(float amount)
-    {
-        mana -= amount;
-        playerScreenRef.UpdateManaBar();
-    }
+   
 
     // Start is called before the first frame update
     void Start()
@@ -87,7 +83,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         equipSystem = new(this, directionOrigin.Find("WeaponParent"));
-        equipSystem.EquipNewWeapon(obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Pumpkin Launcher"));
+        equipSystem.EquipNewWeapon(obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Bloody Chainsaw"));
         abilitiesHandler = GetComponent<AbilitiesHandler>();
         canTakeDamage = true;
         health = maxHealth;
@@ -159,10 +155,12 @@ public class PlayerController : MonoBehaviour
             {
                 if (ability.abilityData.manaCost > mana)
                 {
+                    ability.abilityScript.UnableToCast();
                     return;
                 }
+                ability.abilityScript.DepleteMana();
                 ability.abilityScript.OnAbilityCast();
-                DepleteMana(ability.abilityData.manaCost);
+                
             }
         }
     }

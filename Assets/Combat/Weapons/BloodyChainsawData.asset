@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BloodyChainsawData
   m_EditorClassIdentifier: 
   weaponName: Bloody Chainsaw
-  DefaultDamage: 7
+  DefaultDamage: 12
   DefaultWeaponSpeed: 0.15
   lifeEnergyCost: 140
   weaponPrefab: {fileID: 8694662403913800570, guid: 9e7f6d3c675940c47a1b1ac5de66559f, type: 3}

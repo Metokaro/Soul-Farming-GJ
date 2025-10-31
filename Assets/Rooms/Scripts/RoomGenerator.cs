@@ -181,6 +181,7 @@ public class RoomGenerator : MonoBehaviour
         Destroy(entranceObjInstance);
         originalTilemaps.ForEach((x) => x.ClearAllTiles());
         tilemapInfoList.Clear();
+        tilemapSizes.Clear();
         roomPickerRef.PickCurrentRoom();
         enemiesCount = 0;
     }

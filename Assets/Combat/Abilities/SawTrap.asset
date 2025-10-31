@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: SawTrap
   abilityDisplayName: Saw Trap
-  abilityIcon: {fileID: -1293314876, guid: 7107ff8de21e95247b753ebf3e4a2410, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 8910db97eda2fb34fbf8a903f4e53244, type: 3}
   abilityDescription: Places a saw trap that stuns enemies for a short duration
   abilityType: 1
   cooldown: 9

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: PumpkinWard
   abilityDisplayName: Pumpkin Ward
-  abilityIcon: {fileID: -1857260044, guid: 7107ff8de21e95247b753ebf3e4a2410, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 456aaf751f0f0de47a516bec77c9960d, type: 3}
   abilityDescription: 'Temporarily allows the player to fully block a limited amount
     of hits '
   abilityType: 1

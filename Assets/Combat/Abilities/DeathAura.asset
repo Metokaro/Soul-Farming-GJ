@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: DeathAura
   abilityDisplayName: Death Aura
-  abilityIcon: {fileID: 282699633, guid: 7107ff8de21e95247b753ebf3e4a2410, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 39480360a25004144a61ead3269edf25, type: 3}
   abilityDescription: Releases a large explosion around you
   abilityType: 1
   cooldown: 20

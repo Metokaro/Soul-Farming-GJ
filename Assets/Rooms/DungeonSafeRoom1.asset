@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44db97dfcfa141b43ad4131f446ba5bd, type: 3}
+  m_Name: DungeonSafeRoom1
+  m_EditorClassIdentifier: 
+  entranceLocation: {x: -64.45, y: 22.9, z: 0}
+  exitLocation: {x: -55.86, y: 22.9, z: 0}
+  roomOrigin: {x: -66, y: 20, z: 0}
+  entranceObj: {fileID: 2768139659821071786, guid: a7a6996227bafa54ca7cecb332cf8bf5, type: 3}
+  exitObj: {fileID: 5758226439643942654, guid: 67da88381c8aafd40932176e2f364452, type: 3}
+  copyCoordinates:
+  - targetTilemap: 0
+    minX: -66
+    maxX: -54
+    minY: 20
+    maxY: 30
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
+  - targetTilemap: 1
+    minX: -66
+    maxX: -54
+    minY: 20
+    maxY: 30
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
+  - targetTilemap: 2
+    minX: -66
+    maxX: -54
+    minY: 20
+    maxY: 30
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
+  - targetTilemap: 3
+    minX: -66
+    maxX: -54
+    minY: 20
+    maxY: 30
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
+  minStartingLifeEnergy: 75
+  maxStartingLifeEnergy: 200
+  machineCoordinates:
+  - location: {x: -63.42, y: 24.63, z: 0}
+    machinePrefab: {fileID: 7277031646299492264, guid: 0f0d43d27614d9045a418e2e015a5cff, type: 3}
+  - location: {x: -57.33, y: 21.25, z: 0}
+    machinePrefab: {fileID: 8891656989551385378, guid: e317428551512f84da98afeb5db5fc5d, type: 3}

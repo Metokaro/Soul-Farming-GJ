@@ -30,8 +30,13 @@ public class RoomPicker : MonoBehaviour
     void Start()
     {
         roomGeneratorRef =  GetComponent<RoomGenerator>();
+        
+    }
+
+    public void FinishTutoial()
+    {
         currentRoomType = RoomType.Enemy;
-       roomGeneratorRef.loadableEnemyRoomLayouts=  SetLoadableEnemyLayouts(roomGeneratorRef.enemyRoomLayoutOptions);
+        roomGeneratorRef.loadableEnemyRoomLayouts = SetLoadableEnemyLayouts(roomGeneratorRef.enemyRoomLayoutOptions);
         PickCurrentRoom();
     }
 
@@ -89,8 +94,18 @@ public class RoomPicker : MonoBehaviour
 
     public void PickCurrentRoom()
     {
-        List<RoomDataTemplate> layoutsList = (currentRoomType == RoomType.Enemy) ? roomGeneratorRef.loadableEnemyRoomLayouts.Cast<RoomDataTemplate>().ToList() : roomGeneratorRef.machineRoomLayoutOptions.Cast<RoomDataTemplate>().ToList();
+        List<RoomDataTemplate> layoutsList = new();
+        if (currentRoomType == RoomType.Enemy)
+        {
+          layoutsList.AddRange(  roomGeneratorRef.loadableEnemyRoomLayouts.Select((x) => (x as RoomDataTemplate)));
+
+        }
+        else
+        {
+            layoutsList.AddRange(roomGeneratorRef.machineRoomLayoutOptions.Select((x) => (x as RoomDataTemplate)));
+        }
         int randomNumber = UnityEngine.Random.Range(0, layoutsList.Count);
+        roomGeneratorRef.currentRoom = null;
         roomGeneratorRef.currentRoom = layoutsList[randomNumber];
         roomGeneratorRef.GenerateRoom();
     }

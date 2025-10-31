@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: MegaHeal
   abilityDisplayName: Mega Heal
-  abilityIcon: {fileID: 352688029, guid: 7107ff8de21e95247b753ebf3e4a2410, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 0cb399d03c0791844a68bc3e9fabfce3, type: 3}
   abilityDescription: Regenerates a large amount of hp
   abilityType: 1
   cooldown: 5

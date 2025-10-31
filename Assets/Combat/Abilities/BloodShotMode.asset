@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: BloodshotMode
   abilityDisplayName: Bloodshot Mode
-  abilityIcon: {fileID: -494405193, guid: 50871007cc794eb4a983f3aeb03cbb9c, type: 3}
+  abilityIcon: {fileID: 21300000, guid: cfc77e17bff6d7449a4ae2325a154229, type: 3}
   abilityDescription: Temporariy allows basic attacks to shoot blood projectiles
   abilityType: 0
   cooldown: 10

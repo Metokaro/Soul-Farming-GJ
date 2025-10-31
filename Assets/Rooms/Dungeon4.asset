@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f252720ed65b29142b526a67cd7cdfcc, type: 3}
+  m_Name: Dungeon4
+  m_EditorClassIdentifier: 
+  entranceLocation: {x: -11.64, y: -38.78, z: 0}
+  exitLocation: {x: -60.04, y: -36.14, z: 0}
+  roomOrigin: {x: -62, y: -41, z: 0}
+  entranceObj: {fileID: 2768139659821071786, guid: a7a6996227bafa54ca7cecb332cf8bf5, type: 3}
+  exitObj: {fileID: 5758226439643942654, guid: 67da88381c8aafd40932176e2f364452, type: 3}
+  copyCoordinates:
+  - targetTilemap: 0
+    minX: -62
+    maxX: -9
+    minY: -41
+    maxY: -16
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
+  - targetTilemap: 1
+    minX: -62
+    maxX: -9
+    minY: -41
+    maxY: -16
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
+  - targetTilemap: 2
+    minX: -62
+    maxX: -9
+    minY: -41
+    maxY: -16
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
+  - targetTilemap: 3
+    minX: -62
+    maxX: -9
+    minY: -41
+    maxY: -16
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
+  roomTier: 0
+  startingMana: 50
+  basicEnemiesCount_min: 6
+  basicEnemiesCount_max: 10
+  intermediateEnemiesCount_min: 2
+  intermediateEnemiesCount_max: 5
+  advancedEnemiesCount_min: 0
+  advancedEnemiesCount_max: 0
+  enemies:
+  - {fileID: 11400000, guid: 412cbc13c55e7e14c8a08d9ee693b71b, type: 2}
+  - {fileID: 11400000, guid: 37817e97184f351488272b0d39dd9f13, type: 2}
+  - {fileID: 11400000, guid: a8d4cd201f4c90b48934abe585930973, type: 2}

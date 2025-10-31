@@ -13,7 +13,7 @@ public class AbilityHotbarDisplay : MonoBehaviour
     public TextMeshProUGUI abilityDescription;
     public TextMeshProUGUI abilityName;
     public TextMeshProUGUI manaCost;
-  
+    public GameObject noManaPopup;
     public class AbilitySlotData
     {
         public int slotNumber;

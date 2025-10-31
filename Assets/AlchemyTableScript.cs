@@ -55,7 +55,7 @@ public class AlchemyTableScript : MachineScript
     public void HideStatUI(AlchemyTable_UI.AlchemyTable_StatUIs statUI)
     {
         GameObject statUIObj = statUI.UI_Obj;
-        statUIObj.GetComponent<Image>().color = Color.red;
+        statUIObj.GetComponent<Image>().color =new(1,1,1,0.2f);
         statUIObj.transform.Find("SelectButton").gameObject.SetActive(false);
     }
     public void SelectStat(string stat)

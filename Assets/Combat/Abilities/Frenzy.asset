@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Frenzy
   abilityDisplayName: Frenzy
-  abilityIcon: {fileID: -958231633, guid: ab382d9cbe55e9948902f7f9bb4bfcf0, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 3fcafe2357e31a84591e5d25d3a93467, type: 3}
   abilityDescription: Increases attack speed temporarily
   abilityType: 0
   cooldown: 10

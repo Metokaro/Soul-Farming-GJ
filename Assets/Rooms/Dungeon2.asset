@@ -12,38 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f252720ed65b29142b526a67cd7cdfcc, type: 3}
   m_Name: Dungeon2
   m_EditorClassIdentifier: 
-  entranceLocation: {x: -53.6, y: 1.05, z: 0}
-  exitLocation: {x: -34.61, y: 13.46, z: 0}
-  roomOrigin: {x: -54, y: 0, z: 0}
+  entranceLocation: {x: -98.47, y: 4.67, z: 0}
+  exitLocation: {x: -68.78, y: 4.77, z: 0}
+  roomOrigin: {x: -99, y: 0, z: 0}
   entranceObj: {fileID: 2768139659821071786, guid: a7a6996227bafa54ca7cecb332cf8bf5, type: 3}
   exitObj: {fileID: 5758226439643942654, guid: 67da88381c8aafd40932176e2f364452, type: 3}
   copyCoordinates:
   - targetTilemap: 0
-    minX: -54
-    maxX: -32
+    minX: -99
+    maxX: -68
     minY: 0
-    maxY: 14
+    maxY: 10
     offsetFromOrigin_x: 0
     offsetFromOrigin_y: 0
   - targetTilemap: 1
-    minX: -54
-    maxX: -32
-    minY: 9
-    maxY: 17
+    minX: -99
+    maxX: -68
+    minY: 7
+    maxY: 13
     offsetFromOrigin_x: 0
-    offsetFromOrigin_y: 9
+    offsetFromOrigin_y: 7
   - targetTilemap: 2
-    minX: -54
-    maxX: -32
-    minY: 9
-    maxY: 17
+    minX: -99
+    maxX: -68
+    minY: 7
+    maxY: 13
     offsetFromOrigin_x: 0
-    offsetFromOrigin_y: 9
+    offsetFromOrigin_y: 7
   - targetTilemap: 3
-    minX: -55
-    maxX: -31
+    minX: -100
+    maxX: -67
     minY: -1
-    maxY: 15
+    maxY: 11
     offsetFromOrigin_x: -1
     offsetFromOrigin_y: -1
   roomTier: 0

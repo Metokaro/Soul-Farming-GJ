@@ -11,6 +11,22 @@ public abstract class BaseAbilityScript
     public AbilityDataTemplate abilityData;
     public PlayerController playerRef;
     public GameObject slotObjRef;
+
+    public void UnableToCast()
+    {
+      GameObject popup =  GameObject.Instantiate(slotObjRef.GetComponentInParent<AbilityHotbarDisplay>().noManaPopup, slotObjRef.transform.parent.position, Quaternion.identity);
+        popup.SetActive(true);
+        popup.transform.SetParent(slotObjRef.transform.parent.parent);
+    }
+    public void DepleteMana()
+    {
+        if(cooldownActive)
+        {
+            return;
+        }
+        playerRef.mana -= abilityData.manaCost;
+        playerRef. playerScreenRef.UpdateManaBar();
+    }
     public abstract void OnAbilityCast();
     public virtual void OnAbilityEnd() { }
     public virtual void UpdateAbilitySettings() { }

@@ -83,13 +83,21 @@ public class BaseAIBehaviour : MonoBehaviour
         StartCoroutine(DamagePopup(damageTaken));
         if(health < 1)
         {
-            (FindObjectOfType<RoomGenerator>().currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom.Remove(gameObject);
-            FindObjectOfType<RoomGenerator>().playerController.souls += enemyData.soulDrop;
-            FindObjectOfType<RoomGenerator>().playerController.playerScreenRef.UpdateCurrencies(FindObjectOfType<RoomGenerator>().playerController.souls, 0, false);
+            RemoveFromEnemyList();
             Destroy(gameObject);
         }
     }
 
+    void RemoveFromEnemyList()
+    {
+        if ((FindObjectOfType<RoomGenerator>().currentRoom_Data as RoomGenerator.EnemyRoomData) == null)
+        {
+            return;
+        }
+        (FindObjectOfType<RoomGenerator>().currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom.Remove(gameObject);
+        FindObjectOfType<RoomGenerator>().playerController.souls += enemyData.soulDrop;
+        FindObjectOfType<RoomGenerator>().playerController.playerScreenRef.UpdateCurrencies(FindObjectOfType<RoomGenerator>().playerController.souls, 0, false);
+    }
     IEnumerator DamageIndicator()
     {
         spriteRenderer.color = Color.red;

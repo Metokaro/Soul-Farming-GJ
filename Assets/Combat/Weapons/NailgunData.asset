@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NailgunData
   m_EditorClassIdentifier: 
   weaponName: Nailgun
-  DefaultDamage: 9
+  DefaultDamage: 18
   DefaultWeaponSpeed: 0.3
   lifeEnergyCost: 120
   weaponPrefab: {fileID: 9110893131778609960, guid: 9778fb14c854afd41b6239fadc81c5d1, type: 3}

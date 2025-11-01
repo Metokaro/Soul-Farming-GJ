@@ -18,4 +18,4 @@ MonoBehaviour:
   abilityDescription: Regenerates a large amount of hp
   abilityType: 1
   cooldown: 5
-  manaCost: 75
+  manaCost: 30

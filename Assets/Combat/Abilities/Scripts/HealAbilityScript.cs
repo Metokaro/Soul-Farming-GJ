@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class HealAbilityScript : BaseAbilityScript
 {
-    public float healAmountPerTick = 5;
+    public float healAmountPerTick = 8;
     public float duration = 3;
     public GameObject particleEffects;
     float secondsPassedBy;

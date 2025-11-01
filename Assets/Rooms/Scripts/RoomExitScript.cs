@@ -17,12 +17,12 @@ public class RoomExitScript : InteractableObject
     public override void OnInteract()
     {
         roomGenerator.OnExitRoom(out int enemiesCount);
-        if(enemiesCount > 0)
-        {
-            if (co != null) { StopCoroutine(co); }
-            co = StartCoroutine(ClosePopup());
-            popup.text = "Clear room first!" + "" + "<br>(Enemies remaining: " + enemiesCount.ToString() + ")" ;
-        }
+        //if(enemiesCount > 0)
+        //{
+        //    if (co != null) { StopCoroutine(co); }
+        //    co = StartCoroutine(ClosePopup());
+        //    popup.text = "Clear room first!" + "" + "<br>(Enemies remaining: " + enemiesCount.ToString() + ")" ;
+        //}
     }
 
     IEnumerator ClosePopup()

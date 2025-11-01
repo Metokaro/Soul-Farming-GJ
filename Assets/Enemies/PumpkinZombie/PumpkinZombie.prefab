@@ -586,7 +586,11 @@ MonoBehaviour:
   target: {fileID: 0}
   initiallyFacingLeft: 0
   damagePopupPrefab: {fileID: 1703322097101312785, guid: cd0a7dd43d28bcd43ad318366c186ae3, type: 3}
-  damage: 10
+  spriteRenderer: {fileID: 0}
+  gravePrefab: {fileID: 8989842818534254121, guid: 0c447546519f33e47b38cbf06d87b685, type: 3}
+  trueDetectionRadius: 0
+  truePursuingRange: 0
+  damage: 8
   attackSpeed: 1.6
   postAttackDelay: 0.15
   projectileOrigin: {fileID: 1788541745543877371}
@@ -641,7 +645,7 @@ GameObject:
   - component: {fileID: 202188948362461097}
   - component: {fileID: 3436811563969342005}
   - component: {fileID: 2690329090271777931}
-  m_Layer: 19
+  m_Layer: 0
   m_Name: RottenPumpkinProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +662,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 907576481939416952}
@@ -704,8 +708,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 367030626, guid: f1516f7cf73626946addcc6b0cd3869a, type: 3}
+  m_Color: {r: 0.0017955517, g: 0.764151, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -751,7 +755,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.359375, y: 0.375}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

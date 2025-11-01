@@ -18,4 +18,4 @@ MonoBehaviour:
   abilityDescription: Places a saw trap that stuns enemies for a short duration
   abilityType: 1
   cooldown: 9
-  manaCost: 20
+  manaCost: 15

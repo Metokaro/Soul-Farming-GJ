@@ -17,8 +17,8 @@ public class RoomGenerator : MonoBehaviour
     public PlayerController playerController;
     [HideInInspector]public RoomDataTemplate currentRoom;
     RoomPicker roomPickerRef;
-    GameObject exitObjInstance;
-    GameObject entranceObjInstance;
+    [HideInInspector] GameObject exitObjInstance;
+    [HideInInspector]public GameObject entranceObjInstance;
 
     [HideInInspector]public int clearedRoomsCount;
     EnemySpawnHandler enemySpawnHandler;
@@ -143,6 +143,7 @@ public class RoomGenerator : MonoBehaviour
             MachineRoomData machineRoomData = currentRoom_Data as MachineRoomData;
             machineRoomData.startingLifeEnergy = Random.Range(currentMachineRoom.minStartingLifeEnergy, currentMachineRoom.maxStartingLifeEnergy + 1);
             machineRoomData.machinesInRoom = SetMachinesInRoom();
+            playerController.playerScreenRef.UpdateEnemyCount(0, false);
             //Debug.Log(machineRoomData.startingLifeEnergy);
         }
         else if(currentRoom is EnemyRoomTemplate)
@@ -168,6 +169,14 @@ public class RoomGenerator : MonoBehaviour
             {
                 enemiesCount = (currentRoom_Data as EnemyRoomData).enemiesInRoom.Count;
                 return;
+            }
+           if(playerController.lives < 3)
+            {
+                playerController.lives++;
+            }
+           else
+            {
+                playerController.souls += 25;
             }
             roomPickerRef.IncreaseRoomsClearedCount(currentRoom as EnemyRoomTemplate);
         }

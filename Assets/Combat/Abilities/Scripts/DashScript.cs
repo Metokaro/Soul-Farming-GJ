@@ -23,6 +23,7 @@ public class DashScript : BaseAbilityScript
         abilityHandler.StartCoroutine(ActivateEffect());  
         abilityHandler.StartCoroutine(ActivateDash());
         
+
         IEnumerator Cooldown()
         {
             cooldownActive = true; slotObjRef.GetComponent<AbilitySlotScript>().ShowCooldownBar(cooldown);
@@ -40,6 +41,10 @@ public class DashScript : BaseAbilityScript
 
         IEnumerator ActivateDash()
         {
+            if(playerRef.equipSystem.currentWeaponObj.GetComponent<BaseWeaponScript>().hitboxObj)
+            {
+                GameObject.Destroy(playerRef.equipSystem.currentWeaponObj.GetComponent<BaseWeaponScript>().hitboxObj);
+            }
             playerRef.rb.AddForce(playerRef.directionOrigin.transform.right * 100f, ForceMode2D.Impulse);
             Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerCharacter"), LayerMask.NameToLayer("Enemy"), true);
             playerRef.canMove = false; 

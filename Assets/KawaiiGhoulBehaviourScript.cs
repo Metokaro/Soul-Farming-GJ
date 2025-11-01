@@ -16,6 +16,7 @@ public class KawaiiGhoulBehaviourScript : BaseAIBehaviour, IMoveAnimation
     public GameObject recieverHitbox;
     public override void Attack()
     {
+        base.Attack();
         if(cooldownActive)
         {
             return;

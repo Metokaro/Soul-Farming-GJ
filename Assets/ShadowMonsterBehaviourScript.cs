@@ -17,7 +17,8 @@ public class ShadowMonsterBehaviourScript : BaseAIBehaviour, IMoveAnimation
           Rigidbody2D rb;
     public override void Attack()
     {
-        if(cooldownActive)
+        base.Attack();
+        if (cooldownActive)
         {
             return;
         }

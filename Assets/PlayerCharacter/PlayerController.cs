@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public delegate void OnTakeDamageFunction();
     [HideInInspector] public OnTakeDamageFunction onTakeDamageFunction;
     Color defaultColor;
+    public GameObject gameOverScreen;
+    public float lives;
     public void Move()
     {
         if(canMove == false)
@@ -83,13 +85,14 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         equipSystem = new(this, directionOrigin.Find("WeaponParent"));
-        equipSystem.EquipNewWeapon(obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Bloody Chainsaw"));
+        equipSystem.EquipNewWeapon(obtainableWeapons.FirstOrDefault((x) => x.weaponName == "Scythe"));
         abilitiesHandler = GetComponent<AbilitiesHandler>();
         canTakeDamage = true;
         health = maxHealth;
         
-        mana = maxMana * 0.25f;
+        mana = maxMana;
         playerScreenRef.UpdateCurrencies(souls, 0, false);
+        playerScreenRef.playerLivesDisplay.text = "Lives: " + lives;
         playerScreenRef.UpdateManaBar();
         defaultColor =  spriteRenderer.color;
 
@@ -109,8 +112,23 @@ public class PlayerController : MonoBehaviour
         { return; }
         damageTaken -= Mathf.RoundToInt(damageTaken * (playerStats.defenseMultiplier * 0.15f));
         health -= damageTaken;
-        if(health <= 0 ) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if(health <= 0 ) 
+        {
+            lives--;
+            playerScreenRef.playerLivesDisplay.text = "Lives: " + lives;
+            if (lives > 0)
+            {
+                transform.position = FindObjectOfType<RoomGenerator>().entranceObjInstance.transform.position;
+                health = maxHealth;
+                mana = maxHealth;
+                playerScreenRef.UpdateHealthBar();
+                playerScreenRef.UpdateManaBar();
+            }
+            else
+            {
+                GameOver();
+            }
+            
         }
         playerScreenRef.UpdateHealthBar();
     }
@@ -143,6 +161,17 @@ public class PlayerController : MonoBehaviour
        
     }
 
+    void GameOver()
+    {
+        transform.position = new(9999, 9999, 0);
+        gameOverScreen.SetActive(true);
+    }
+
+ public   void Restart()
+    {
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     void CheckForAbilities()
     {
         if (abilitiesHandler.abilities.Count < 1)

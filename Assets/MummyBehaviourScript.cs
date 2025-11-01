@@ -11,6 +11,7 @@ public class MummyBehaviourScript : BaseAIBehaviour, IMoveAnimation
 
     public override void Attack()
     {
+        base.Attack();
         if (cooldownActive)
         {
             return;

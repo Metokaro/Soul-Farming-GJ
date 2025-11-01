@@ -19,4 +19,4 @@ MonoBehaviour:
     of hits '
   abilityType: 1
   cooldown: 15
-  manaCost: 60
+  manaCost: 25

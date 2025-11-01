@@ -18,4 +18,4 @@ MonoBehaviour:
   abilityDescription: Increases attack speed temporarily
   abilityType: 0
   cooldown: 10
-  manaCost: 35
+  manaCost: 25

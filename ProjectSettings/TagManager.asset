@@ -27,7 +27,7 @@ TagManager:
   - PlayerProjectile
   - EnemyHitbox
   - 
-  - 
+  - Props
   - Enemy
   - PlayerCharacter
   - 

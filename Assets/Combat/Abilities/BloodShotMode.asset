@@ -18,4 +18,4 @@ MonoBehaviour:
   abilityDescription: Temporariy allows basic attacks to shoot blood projectiles
   abilityType: 0
   cooldown: 10
-  manaCost: 45
+  manaCost: 20

@@ -496,7 +496,9 @@ MonoBehaviour:
   target: {fileID: 0}
   initiallyFacingLeft: 0
   damagePopupPrefab: {fileID: 1703322097101312785, guid: cd0a7dd43d28bcd43ad318366c186ae3, type: 3}
-  damage: 20
+  spriteRenderer: {fileID: 0}
+  gravePrefab: {fileID: 8989842818534254121, guid: 0c447546519f33e47b38cbf06d87b685, type: 3}
+  damage: 15
   attackSpeed: 1
   preAttackDelay: 0.25
   postAttackDelay: 0.6

@@ -28,7 +28,10 @@ public class BaseAIBehaviour : MonoBehaviour
     public OnPursue onPursueFunctions;
     [HideInInspector] public SpriteRenderer spriteRenderer;
     Color defaultColor;
+    public GameObject gravePrefab;
     Coroutine damageIndicator_co;
+    [HideInInspector]public float trueDetectionRadius;
+    [HideInInspector] public float truePursuingRange;
     public virtual void Start()
     {
         aiPathfinder = GetComponent<AIPath>();
@@ -40,8 +43,10 @@ public class BaseAIBehaviour : MonoBehaviour
         initiallyFacingLeft = true;
         spriteRenderer = GetComponent<SpriteRenderer>();
         defaultColor = spriteRenderer.color;
+        trueDetectionRadius = detectionRadius;
+        truePursuingRange = pursueDistance;
     }
-    public virtual  void Attack() { }
+    public virtual  void Attack() { pursueDistance = truePursuingRange; }
 
     public void DetectTargetsInRange()
     {
@@ -84,8 +89,14 @@ public class BaseAIBehaviour : MonoBehaviour
         if(health < 1)
         {
             RemoveFromEnemyList();
+            SpawnGrave();
             Destroy(gameObject);
         }
+    }
+
+    void SpawnGrave()
+    {
+        Instantiate(gravePrefab, transform.position, Quaternion.identity).SetActive(true);
     }
 
     void RemoveFromEnemyList()
@@ -95,6 +106,7 @@ public class BaseAIBehaviour : MonoBehaviour
             return;
         }
         (FindObjectOfType<RoomGenerator>().currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom.Remove(gameObject);
+        FindObjectOfType<RoomGenerator>().playerController.playerScreenRef.UpdateEnemyCount((FindObjectOfType<RoomGenerator>().currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom.Count, true);
         FindObjectOfType<RoomGenerator>().playerController.souls += enemyData.soulDrop;
         FindObjectOfType<RoomGenerator>().playerController.playerScreenRef.UpdateCurrencies(FindObjectOfType<RoomGenerator>().playerController.souls, 0, false);
     }
@@ -102,6 +114,7 @@ public class BaseAIBehaviour : MonoBehaviour
     {
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.1f);
+        detectionRadius = trueDetectionRadius;
         spriteRenderer.color = defaultColor;
     }
 

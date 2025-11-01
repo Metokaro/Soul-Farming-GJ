@@ -5,6 +5,7 @@ using UnityEngine;
 public class TutorialExitScript : InteractableObject
 {
     public RoomPicker roomPicker;
+    public GameObject skipTutorialButton;
     public override void OnInteract()
     {
         FinishedTutorial();
@@ -14,5 +15,6 @@ public class TutorialExitScript : InteractableObject
     {
         roomPicker.FinishTutoial();
         Destroy(transform.parent.gameObject);
+        skipTutorialButton.SetActive(false);
     }
 }

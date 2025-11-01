@@ -18,4 +18,4 @@ MonoBehaviour:
   abilityDescription: Dashes through enemies, dealing damage
   abilityType: 1
   cooldown: 5
-  manaCost: 25
+  manaCost: 15

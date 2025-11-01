@@ -23,6 +23,8 @@ public class NailProjectileScript : MonoBehaviour
             if (hitColliderLayer == "EnemyHitbox")
             {
                 BaseAIBehaviour aiScript = collision.transform.parent.GetComponent<BaseAIBehaviour>();
+                aiScript.detectionRadius = 1000;
+                aiScript.pursueDistance = 1000;
                 aiScript.TakeDamage(parentScript.calculatedDamage);
             }
         }

@@ -37,6 +37,8 @@ public class PumpkinProjectileScript : MonoBehaviour
         foreach(var hit in hits)
         {
             BaseAIBehaviour aiScript = hit.collider.transform.parent.GetComponent<BaseAIBehaviour>();
+            aiScript.detectionRadius = 1000;
+            aiScript.pursueDistance = 1000;
             aiScript.TakeDamage(parentScript.calculatedDamage);
         }
        parentScript.StartCoroutine(CreateEffect());

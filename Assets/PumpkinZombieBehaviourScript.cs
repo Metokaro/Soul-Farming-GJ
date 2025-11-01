@@ -14,6 +14,7 @@ public class PumpkinZombieBehaviourScript : BaseAIBehaviour, IMoveAnimation
     public float projectileSpeed;
     public override void Attack()
     {
+        base.Attack();
         if (cooldownActive)
         {
             return;

@@ -18,4 +18,4 @@ MonoBehaviour:
   abilityDescription: Releases a large explosion around you
   abilityType: 1
   cooldown: 20
-  manaCost: 60
+  manaCost: 30

@@ -16171,6 +16171,8 @@ MonoBehaviour:
   playerScreenRef: {fileID: 0}
   canMove: 0
   canTakeDamage: 0
+  gameOverScreen: {fileID: 0}
+  lives: 3
 --- !u!61 &5041324286223574138
 BoxCollider2D:
   m_ObjectHideFlags: 0

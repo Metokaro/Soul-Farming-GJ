@@ -25,6 +25,27 @@ MonoBehaviour:
     maxY: -72
     offsetFromOrigin_x: 0
     offsetFromOrigin_y: 0
+  - targetTilemap: 1
+    minX: -136
+    maxX: -122
+    minY: -85
+    maxY: -72
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
+  - targetTilemap: 2
+    minX: -136
+    maxX: -122
+    minY: -85
+    maxY: -72
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
+  - targetTilemap: 3
+    minX: -136
+    maxX: -122
+    minY: -85
+    maxY: -72
+    offsetFromOrigin_x: 0
+    offsetFromOrigin_y: 0
   minStartingLifeEnergy: 75
   maxStartingLifeEnergy: 200
   machineCoordinates:

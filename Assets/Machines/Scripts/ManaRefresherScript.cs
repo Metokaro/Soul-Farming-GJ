@@ -18,7 +18,7 @@ public class ManaRefresherScript : MachineScript
     }
     public void OnSliderChanged()
     {
-        input = Mathf.Floor(uiScript.conversionSlider.value * maxOutput / manaPerLifeEnergy);
+        input = Mathf.Floor(uiScript.conversionSlider.value * maxOutput * (1/ manaPerLifeEnergy));
         output = input * manaPerLifeEnergy;
         UpdateDisplay();
     }

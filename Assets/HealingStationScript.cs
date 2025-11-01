@@ -18,7 +18,7 @@ public class HealingStationScript : MachineScript
     }
     public void OnSliderChanged()
     {
-        input = Mathf.Floor(uiScript.conversionSlider.value * maxOutput / healthPerLifeEnergy);
+        input = Mathf.Floor(uiScript.conversionSlider.value * maxOutput *( 1 / healthPerLifeEnergy));
         output = input * healthPerLifeEnergy;
         UpdateDisplay();
     }

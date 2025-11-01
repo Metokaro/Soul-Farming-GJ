@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using static RoomGenerator;
 
 public class EnemySpawnHandler : MonoBehaviour
 {
@@ -53,7 +54,9 @@ public class EnemySpawnHandler : MonoBehaviour
                     SpawnRandomEnemy(advancedEnemiesData.ToList());
                 }
             }
+            roomGeneratorRef.playerController.playerScreenRef.UpdateEnemyCount((roomGeneratorRef.currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom.Count, true);
         }
+    
     }
 
 
@@ -89,14 +92,14 @@ public class EnemySpawnHandler : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(position, Vector3.zero, 1, unspawnableAreaLayerMask);
         return hit;
     }
-    public void ClearEnemies()
-    {
-        foreach (GameObject enemy in (roomGeneratorRef.currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom)
-        {
-            Destroy(enemy);
-        }
-        (roomGeneratorRef.currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom.Clear();
-    }
+    //public void ClearEnemies()
+    //{
+    //    foreach (GameObject enemy in (roomGeneratorRef.currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom)
+    //    {
+    //        Destroy(enemy);
+    //    }
+    //    (roomGeneratorRef.currentRoom_Data as RoomGenerator.EnemyRoomData).enemiesInRoom.Clear();
+    //}
     //public void Update()
     //{
     //    if(Input.GetKeyDown(KeyCode.Mouse0))
@@ -106,13 +109,13 @@ public class EnemySpawnHandler : MonoBehaviour
     //        Debug.Log(hit.collider);
     //    }
     //}
-    public void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            ClearEnemies();
-        }
-    }
+    //public void Update()
+    //{
+    //    if(Input.GetKeyDown(KeyCode.H))
+    //    {
+    //        ClearEnemies();
+    //    }
+    //}
     public void SpawnEnemies()
     {
         roomGeneratorRef = GetComponent<RoomGenerator>();
